@@ -3,9 +3,13 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser');
 const static = require('serve-static');
+const uuid = require('uuid')
 const app = express()                                       // 기본설정.
 
+const db=require('./helper/mysql')
+const pool = db.pool;
 const helper = require('./helper/helper')
+
 const fetch = require('fetch')
 
 const cheerio = require('cheerio')                  //크롤링을 위한 모듈
@@ -22,7 +26,11 @@ app.set('views', './views')                                         // view engi
 
 app.get('/',helper.asyncWrapper(async(req,res) => {
     let data = await helper.fetcher("https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100")
+    let conn=await pool.getConnection();
+    await conn.query("INSERT INTO sample(id) VALUES(?)",[uuid.v4()]);
      console.log(data);
+
+
 }))
 
 
