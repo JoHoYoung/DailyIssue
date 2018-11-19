@@ -241,7 +241,6 @@ router.post('/dupemail',helper.asyncWrapper(async (req,res) => {
     }
 }))
 ```
-
 3. 중복인경우 700, 아닌경우 200을 리턴한다.
 4. 클라이언트 단에서는 해당 코드를 체크하여 유저에게 알려줄 수 있게한다.
 5. 중복여부에 따라 css input border 색 변경.
