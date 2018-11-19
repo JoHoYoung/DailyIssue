@@ -19,4 +19,5 @@ ALTER USER 'root'@'%' IDENTIFIED BY 'mypassword';
 ```
 CREATE USER 'hoyoungdb'@'%' IDENTIFIED WITH mysql_native_password BY 'hoyoung123';
 ```
-#### 2.
+#### 2. Docker Mysql 관련 문제.
+> Docker에 mysql 이미지를 8.0으로 받으니 node mysql 모듈과 호환이 되지 않았다. 버전을 낮추어서 다시 다운로드 해야될것 같다. 버전문제 때문에 시간을 많이 썼다.
