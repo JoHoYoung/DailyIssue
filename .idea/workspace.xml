@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19dece40-e1a8-418b-a4e0-05667f585417" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,9 +58,10 @@
     <session id="140119384">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -91,11 +92,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
+            <state relative-caret-position="210">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -113,7 +114,7 @@
         <entry file="file://$PROJECT_DIR$/helper/mysql.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+              <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -136,11 +137,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="255">
+              <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -217,6 +218,7 @@
       <path value="$PROJECT_DIR$/node_modules/css-select/package.json" />
       <path value="$PROJECT_DIR$/node_modules/css-what/package.json" />
       <path value="$PROJECT_DIR$/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/denque/package.json" />
       <path value="$PROJECT_DIR$/node_modules/depd/package.json" />
       <path value="$PROJECT_DIR$/node_modules/destroy/package.json" />
       <path value="$PROJECT_DIR$/node_modules/dom-serializer/node_modules/domelementtype/package.json" />
@@ -236,13 +238,17 @@
       <path value="$PROJECT_DIR$/node_modules/finalhandler/package.json" />
       <path value="$PROJECT_DIR$/node_modules/forwarded/package.json" />
       <path value="$PROJECT_DIR$/node_modules/fresh/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/generate-function/package.json" />
       <path value="$PROJECT_DIR$/node_modules/htmlparser2/node_modules/domelementtype/package.json" />
       <path value="$PROJECT_DIR$/node_modules/htmlparser2/package.json" />
       <path value="$PROJECT_DIR$/node_modules/http-errors/package.json" />
       <path value="$PROJECT_DIR$/node_modules/iconv-lite/package.json" />
       <path value="$PROJECT_DIR$/node_modules/inherits/package.json" />
       <path value="$PROJECT_DIR$/node_modules/ipaddr.js/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/is-property/package.json" />
       <path value="$PROJECT_DIR$/node_modules/lodash/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/long/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/lru-cache/package.json" />
       <path value="$PROJECT_DIR$/node_modules/media-typer/package.json" />
       <path value="$PROJECT_DIR$/node_modules/merge-descriptors/package.json" />
       <path value="$PROJECT_DIR$/node_modules/methods/package.json" />
@@ -250,6 +256,10 @@
       <path value="$PROJECT_DIR$/node_modules/mime-types/package.json" />
       <path value="$PROJECT_DIR$/node_modules/mime/package.json" />
       <path value="$PROJECT_DIR$/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/mysql2/node_modules/iconv-lite/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/mysql2/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/named-placeholders/node_modules/lru-cache/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/named-placeholders/package.json" />
       <path value="$PROJECT_DIR$/node_modules/negotiator/package.json" />
       <path value="$PROJECT_DIR$/node_modules/nth-check/package.json" />
       <path value="$PROJECT_DIR$/node_modules/on-finished/package.json" />
@@ -257,6 +267,7 @@
       <path value="$PROJECT_DIR$/node_modules/parseurl/package.json" />
       <path value="$PROJECT_DIR$/node_modules/path-to-regexp/package.json" />
       <path value="$PROJECT_DIR$/node_modules/proxy-addr/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/pseudomap/package.json" />
       <path value="$PROJECT_DIR$/node_modules/psl/package.json" />
       <path value="$PROJECT_DIR$/node_modules/qs/package.json" />
       <path value="$PROJECT_DIR$/node_modules/range-parser/package.json" />
@@ -265,15 +276,19 @@
       <path value="$PROJECT_DIR$/node_modules/safe-buffer/package.json" />
       <path value="$PROJECT_DIR$/node_modules/safer-buffer/package.json" />
       <path value="$PROJECT_DIR$/node_modules/send/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/seq-queue/package.json" />
       <path value="$PROJECT_DIR$/node_modules/serve-static/package.json" />
       <path value="$PROJECT_DIR$/node_modules/setprototypeof/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/sqlstring/package.json" />
       <path value="$PROJECT_DIR$/node_modules/statuses/package.json" />
       <path value="$PROJECT_DIR$/node_modules/string_decoder/package.json" />
       <path value="$PROJECT_DIR$/node_modules/type-is/package.json" />
       <path value="$PROJECT_DIR$/node_modules/unpipe/package.json" />
       <path value="$PROJECT_DIR$/node_modules/util-deprecate/package.json" />
       <path value="$PROJECT_DIR$/node_modules/utils-merge/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/uuid/package.json" />
       <path value="$PROJECT_DIR$/node_modules/vary/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/yallist/package.json" />
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
@@ -353,17 +368,18 @@
       <workItem from="1541418575925" duration="167000" />
       <workItem from="1541836328915" duration="5288000" />
       <workItem from="1542026639112" duration="2828000" />
+      <workItem from="1542793911597" duration="211000" />
+      <workItem from="1542794326648" duration="195000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15775000" />
+    <option name="totallyTimeSpent" value="16181000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14799154" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14799154" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -375,7 +391,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.46934462" visible="true" weight="0.32891566" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.46934462" visible="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5306554" side_tool="true" weight="0.32891566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -390,41 +406,10 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.js" />
-    <entry file="file://$PROJECT_DIR$/public/css/index.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helper/helper.js">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helper/redis.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helper/mysql.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        <state relative-caret-position="210">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -435,17 +420,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
+    <entry file="file://$PROJECT_DIR$/helper/mysql.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
+        <state relative-caret-position="75">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper/redis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper/helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/index.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
         </state>
       </provider>
     </entry>
