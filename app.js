@@ -25,10 +25,12 @@ app.set('views', './views')                                         // view engi
 
 
 app.get('/',helper.asyncWrapper(async(req,res) => {
-    let data = await helper.fetcher("https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100")
+    let data = await helper.fetcher("https://linder.kr/")
+    let $ = cheerio.load(data)
+    let inner = $("body").text()
+    console.dir(inner)
     let conn=await pool.getConnection();
-    await conn.query("INSERT INTO sample(id) VALUES(?)",[uuid.v4()]);
-     console.log(data);
+    //await conn.query("INSERT INTO test(id) VALUES(?)",[uuid.v4()]);
 
 
 }))
