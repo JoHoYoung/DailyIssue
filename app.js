@@ -7,13 +7,8 @@ const uuid = require('uuid')
 const app = express()                                       // 기본설정.
 
 const db=require('./helper/mysql')
-const pool = db.pool;
 const helper = require('./helper/helper')
-
-const fetch = require('fetch')
-
-const cheerio = require('cheerio')                  //크롤링을 위한 모듈
-
+const pool = db.pool;
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());                                 // request의 body값을 가져오기 위한 설정
@@ -25,10 +20,10 @@ app.set('views', './views')                                         // view engi
 
 
 app.get('/',helper.asyncWrapper(async(req,res) => {
-    let data = await helper.fetcher("https://linder.kr/")
-    let $ = cheerio.load(data)
-    let inner = $("body").text()
-    console.dir(inner)
+    let data = await helper.NaverRightsideFetcher();
+
+//    console.log(data);
+
     let conn=await pool.getConnection();
     //await conn.query("INSERT INTO test(id) VALUES(?)",[uuid.v4()]);
 

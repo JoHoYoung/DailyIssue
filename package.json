@@ -1,0 +1,22 @@
+{
+  "name": "dailyissue",
+  "version": "1.0.0",
+  "description": "#### target : https://news.naver.com/main/home.nhn #### url fetch -> npm cheerio",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "fetch": "^1.1.0",
+    "moment": "^2.22.2",
+    "mysql2": "^1.6.4",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

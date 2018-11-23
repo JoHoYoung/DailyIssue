@@ -2,12 +2,12 @@ var account = module.exports = {}
 
 
 //Mysql 설정
-account.MYSQL_USERID = 'root'
+account.MYSQL_USERID = 'hoyoung'
 account.MYSQL_PASSWORD = 'hoyoung123'
-account.MYSQL_PORT = 32789
-account.MYSQL_HOST = "127.0.0.1"
+account.MYSQL_PORT = 3306
+account.MYSQL_HOST = '13.209.8.178'
 account.MYSQL_CONNECTION_LIMIT = 150;
-account.MYSQL_DATABASE = 'local'
+account.MYSQL_DATABASE = 'daily'
 
 
 //Redis 설정
