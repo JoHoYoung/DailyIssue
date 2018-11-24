@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19dece40-e1a8-418b-a4e0-05667f585417" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/account.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helper/helper.js" beforeDir="false" afterPath="$PROJECT_DIR$/helper/helper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -64,11 +62,12 @@
     <session id="140119384">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -88,14 +87,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="2018" />
-          <entry key="md" value="1423" />
+          <entry key="js" value="2934" />
+          <entry key="md" value="1432" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="2018" />
-          <entry key="PLAIN_TEXT" value="1423" />
+          <entry key="JavaScript" value="2934" />
+          <entry key="PLAIN_TEXT" value="1432" />
         </counts>
       </usages-collector>
     </session>
@@ -105,8 +104,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+            <state relative-caret-position="375">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -114,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/account.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="195">
+              <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -141,8 +140,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helper/helper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="14" lean-forward="true" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+            <state relative-caret-position="283">
+              <caret line="30" column="94" lean-forward="true" selection-start-line="30" selection-start-column="94" selection-end-line="30" selection-end-column="94" />
             </state>
           </provider>
         </entry>
@@ -159,8 +158,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="345">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -177,7 +176,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package-lock.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="315">
               <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
             </state>
           </provider>
@@ -211,11 +210,11 @@
         <option value="$PROJECT_DIR$/helper/db.js" />
         <option value="$PROJECT_DIR$/helper/redis.js" />
         <option value="$PROJECT_DIR$/helper/mysql.js" />
-        <option value="$PROJECT_DIR$/config/account.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/config/account.js" />
         <option value="$PROJECT_DIR$/helper/helper.js" />
         <option value="$PROJECT_DIR$/helper/helper.js" />
+        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -231,105 +230,20 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
-      <path value="$PROJECT_DIR$/node_modules/@types/node/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/accepts/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/array-flatten/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/biskviit/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/body-parser/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/boolbase/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/bytes/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/cheerio/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/content-disposition/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/content-type/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/cookie-signature/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/cookie/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/css-select/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/css-what/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/debug/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/denque/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/depd/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/destroy/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/dom-serializer/node_modules/domelementtype/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/dom-serializer/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/domelementtype/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/domhandler/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/domutils/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/ee-first/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/ejs/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/encodeurl/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/encoding/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/entities/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/escape-html/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/etag/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/express/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/fetch/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/finalhandler/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/forwarded/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/fresh/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/generate-function/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/htmlparser2/node_modules/domelementtype/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/htmlparser2/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/http-errors/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/iconv-lite/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/inherits/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/ipaddr.js/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/is-property/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/lodash/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/long/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/lru-cache/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/media-typer/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/merge-descriptors/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/methods/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/mime-db/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/mime-types/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/mime/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/ms/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/mysql2/node_modules/iconv-lite/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/mysql2/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/named-placeholders/node_modules/lru-cache/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/named-placeholders/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/negotiator/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/nth-check/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/on-finished/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/parse5/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/parseurl/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/path-to-regexp/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/proxy-addr/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/pseudomap/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/psl/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/qs/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/range-parser/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/raw-body/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/readable-stream/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/safe-buffer/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/safer-buffer/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/send/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/seq-queue/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/serve-static/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/setprototypeof/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/sqlstring/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/statuses/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/string_decoder/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/type-is/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/unpipe/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/util-deprecate/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/utils-merge/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/uuid/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/vary/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/yallist/package.json" />
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="177" />
+    <option name="y" value="23" />
+    <option name="width" value="1263" />
+    <option name="height" value="819" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -355,12 +269,19 @@
             <path>
               <item name="Dailyissue" type="b2602c69:ProjectViewProjectNode" />
               <item name="Dailyissue" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Dailyissue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Dailyissue" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -400,18 +321,19 @@
       <workItem from="1542793911597" duration="211000" />
       <workItem from="1542794326648" duration="195000" />
       <workItem from="1542794655454" duration="8279000" />
-      <workItem from="1542972632920" duration="6561000" />
+      <workItem from="1542972632920" duration="6648000" />
+      <workItem from="1543043756400" duration="2691000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31021000" />
+    <option name="totallyTimeSpent" value="33799000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14799154" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13319239" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -423,7 +345,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.46934462" visible="true" weight="0.40481928" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.46934462" visible="true" weight="0.32409638" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5306554" side_tool="true" weight="0.32891566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -441,59 +363,10 @@
     <entry file="file://$PROJECT_DIR$/public/css/index.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/helper/redis.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/account.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="315">
           <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helper/mysql.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helper/helper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="14" lean-forward="true" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
@@ -504,10 +377,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper/redis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper/mysql.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/account.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper/helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="30" column="94" lean-forward="true" selection-start-line="30" selection-start-column="94" selection-end-line="30" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>

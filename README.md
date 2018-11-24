@@ -6,6 +6,8 @@
 #### url fetch -> npm cheerio
 
 ### Docker Mysql:8.0 설정
+### Docker Redis:latest 설정
+
 #### ERROR : Client does not support authentication protocol requested by server; consider upgrading MySQL client
 > mysql:latest의 auth plugin이 node와 맞지 않았다. 해결하느라 2일정도 걸린것 같다.   Mysql 에러 때문에 너무 많은 시간을 썼다.
 #### 동기화 Promise 처리를 위해 mysql2/promise 모듈 사용.
@@ -20,7 +22,4 @@ ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY �
 
 <img width="1064" alt="2018-11-23 11 18 05" src="https://user-images.githubusercontent.com/37579650/48948012-7ef58880-ef76-11e8-97ac-89f7c5172ee0.png">
 
-### Docker Redis:latest 설정
-
-
-
+###

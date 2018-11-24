@@ -21,7 +21,7 @@ app.set('views', './views')                                         // view engi
 
 app.get('/',helper.asyncWrapper(async(req,res) => {
     let data = await helper.NaverRightsideFetcher();
-
+    console.log("끝")
 //    console.log(data);
 
     let conn=await pool.getConnection();
