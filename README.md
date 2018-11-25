@@ -28,3 +28,5 @@ ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY �
 
 #### ARTICLE_DATA
 <img width="1440" alt="2018-11-24 5 05 07" src="https://user-images.githubusercontent.com/37579650/48977417-03621b80-f0dd-11e8-9f7a-ab9d49d4e421.png">
+
+ARTICLE_DATA의 article_id 속성은 ARTICLE의 id를 참조하는 외래키 이다. 이 관계로 데이터들을 날짜, 주제별로 구분하여 가져올 수 있다.
