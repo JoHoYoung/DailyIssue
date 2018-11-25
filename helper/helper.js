@@ -37,7 +37,7 @@ function NaverRightsideFetcher(){
                 }
             })
 
-            resolve("hihi");
+            resolve("Success");
         });
     })
 }

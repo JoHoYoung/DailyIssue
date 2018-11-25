@@ -1,9 +1,8 @@
-## Backend
-#### Nodejs(express)
+## Daily ISSUE
+#### Server : Nodejs(express)
 #### DB : redis, Mysql
 
-#### target : https://news.naver.com/main/home.nhn
-#### url fetch -> npm cheerio
+#### Target : https://news.naver.com/main/home.nhn
 
 ### Redis(latest) : Docker
 ### Mysql(latest) : Aws Ec2 Unbuntu 사용
@@ -17,6 +16,44 @@
 ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘사용할패스워드’
 ```
 
+#### fetch 모듈을 하용하여 HTML을 불러온 후 cheerio 모듈을 통해 필요한 내용 필터링. HTML 구조를 분석하는 일이 제일 많을것 같다.
+```
+function NaverRightsideFetcher(){
+    return new Promise((resolve,reject) => {
+        fetch.fetchUrl("https://news.naver.com/main/home.nhn", async function(error, meta, body){
+
+            let conn = await pool.getConnection()
+
+            const $ = cheerio.load(body);
+
+            $("#container > div.main_aside > div.section.section_wide > div").each(async function(index, obj){
+
+                if(index>=2) {
+                    let keyword = $(this).find("h5").text()
+                    let num = 0;
+                    let article_id = uuid.v4();
+
+                    console.log(keyword)
+                    $(this).find("ul > li ").each(async function (idx, obj) {
+                        let title = $(this).find("a").text();
+                        let link = "https://news.naver.com" + $(this).find("a").attr("href")
+                        num++
+                        let Article_dataQ = "INSERT INTO ARTICLE_DATA(id, title, link, article_id, state, created_date, updated_Date)" +
+                            " VALUES(?, ?, ?, ?, 'C', now(), now())"
+                        await conn.query(Article_dataQ, [uuid.v4(), title, link, article_id]);
+
+                    })
+                    let ArticleQ = "INSERT INTO ARTICLE(id, title, length, state, created_date, updated_date)" +
+                        " VALUES(?, ?, ?, 'C', now(), now())"
+                    await conn.query(ArticleQ, [article_id, keyword, num])
+                }
+            })
+
+            resolve("Success");
+        });
+    })
+}
+```
 ### DB설계.
 현재 크롤링 한 데이터는 분야별로 title , link , body ....  등이 필요하다. 데이터는 각각 하나의 튜플을 구성하고 ( ARTICLE_DATA table ), 그 데이터들은 하나의 article_id 로 묶인다. ( ARTICLE table ). ARTICLE_DATA 테이블의 article_id 속성은 ARTICLE 테이블의 id를 참조하는 외래키로 구성하였다.
 
