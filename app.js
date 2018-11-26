@@ -22,14 +22,12 @@ app.set('views', './views')                                         // view engi
 app.get('/',helper.asyncWrapper(async(req,res) => {
     let data = await helper.NaverRightsideFetcher();
     console.log("끝")
-//    console.log(data);
 
     let conn=await pool.getConnection();
-    //await conn.query("INSERT INTO test(id) VALUES(?)",[uuid.v4()]);
 
 
 }))
-
+s
 
 http.createServer(app).listen(3001, function(){
     console.log("서버시작")

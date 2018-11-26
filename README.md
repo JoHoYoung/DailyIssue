@@ -68,3 +68,38 @@ function NaverRightsideFetcher(){
 <img width="1440" alt="2018-11-24 5 05 07" src="https://user-images.githubusercontent.com/37579650/48977417-03621b80-f0dd-11e8-9f7a-ab9d49d4e421.png">
 
 ARTICLE_DATA의 article_id 속성은 ARTICLE의 id를 참조하는 외래키 이다. 이 관계로 데이터들을 날짜, 주제별로 구분하여 가져올 수 있다.
+
+### DB설계 #2
+
+<img width="950" alt="2018-11-26 10 43 38" src="https://user-images.githubusercontent.com/37579650/49018048-b4e07a00-f1cd-11e8-868d-8266ef72a068.png">
+
+#### USER table
+1. id를 고유값으로 가지며 uuid사용.
+2. email은 파싱한 데이터를 메일로 보내주기 위해 저장한다.
+3. 유저의 닉네임을 저장한다.
+4. 기타 필요한 정보들을 저장하며 추후에 필요에 따라 추가한다.
+
+#### ARTICLE의 type. 정의
+1. 여러페이지를 크롤링 할 것이기 때문에 type은 parsing한 페이지를 정의하는데 사용한다.
+2. 같은 페이지를 다시 파싱하는 경우, 그 페이지로 정의된 타입과 타입이 같은 ARTICLE의 state 는 'T'로 바꾼다.
+3. 파싱 데이터를 전송할때는 state가 'C'인 데이터만 전송한다.
+4. ARTICLE과 매칭되는 ARTICLE_DATA 의 state도 'T'로 바꾼다.
+5. 삭제된 데이터의 state 는 'D'로 정의한다.
+6. 파싱할 페이지와, 그 페이지를 정의할 타입도 따로 테이블로 구성한다.
+7. 특정 유저가 해당 페이지(type)을 구독하고 있을 경우에만 그에 관련된 내용을 전송한다.
+7. 크롤링 할 주기는 나중에 정의한다.
+
+#### SUBSCRIBE table
+1. 특정 유저가 어떤 페이지의 크롤링 데이터를 받아보기로 정했는지를 판단하여 해당내용만 전송하기 위한 테이블이다.
+2. 해당 페이지가 어떤 페이지 이며, 그 페이지에 대한 정보, 구독자 수 를 저장하는 테이블을 따로 만들어 관리한다. (CHANNEL)
+3. SUBSCRIBE 테이블의 type 인자는 CHANNEL 테이블의 id 인자를 참조하는 외래키 이다.
+
+#### CHANNEL table
+1. 특정 페이지의 정보를 나타내는 테이블 이다.
+2. 이 테이블의 id는 SUBSCRIBE, ARTICLE 테이블이 참조한다.
+3. id는 uuid로 생성하며, 유저에게 해당채널이 어떤 채널인지 보여줄때 사용하는 값은 channel_name 속성이다.
+4. 해당채널에 대한 통계를 쉽게 얻기 위해 subscriber 속성에 구독자 수도 저장한다.
+
+### 매일 특정횟수 크롤링, 전송은 우분투 서버의 Cron으로 특정시간에 배치 프로그램이 작동되도록 한다.
+
+
