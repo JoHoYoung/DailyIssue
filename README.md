@@ -92,7 +92,7 @@ ARTICLE_DATA의 article_id 속성은 ARTICLE의 id를 참조하는 외래키 이
 #### SUBSCRIBE table
 1. 특정 유저가 어떤 페이지의 크롤링 데이터를 받아보기로 정했는지를 판단하여 해당내용만 전송하기 위한 테이블이다.
 2. 해당 페이지가 어떤 페이지 이며, 그 페이지에 대한 정보, 구독자 수 를 저장하는 테이블을 따로 만들어 관리한다. (CHANNEL)
-3. SUBSCRIBE 테이블의 type 인자는 CHANNEL 테이블의 id 인자를 참조하는 외래키 이다.
+3. SUBSCRIBE 테이블의 channel_id 인자는 CHANNEL 테이블의 id 인자를 참조하는 외래키 이다.
 
 #### CHANNEL table
 1. 특정 페이지의 정보를 나타내는 테이블 이다.
