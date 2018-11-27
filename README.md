@@ -123,8 +123,8 @@ db에 채널별로 저장된 내용으로 이메일 html을 만들어주는 코�
             for(let a=0;a<articledata.length;a++)
             {
              emailhtml = emailbuilder.BuildHtmlMiddleContent(emailhtml,articledata[i].link,articledata[i].title)
-
             }
+            
             emailhtml = emailbuilder.EndHtmlMiddleContent(emailhtml)
 
         }
