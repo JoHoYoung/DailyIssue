@@ -102,4 +102,51 @@ ARTICLE_DATA의 article_id 속성은 ARTICLE의 id를 참조하는 외래키 이
 
 ### 매일 특정횟수 크롤링, 전송은 우분투 서버의 Cron으로 특정시간에 배치 프로그램이 작동되도록 한다.
 
+### 다음날 보니 헷갈려서 칼럼명 수정 type -> channel_id
+
+### 각 채널의 모든 구독자들에게 이메일 전송
+1. 채널의 목록은 테스트를 위해 하드코딩하고, 나중엔 쿼리로 가져온다.
+2. 각 채널별 모든 구독자 정보를 inner join을 통해 가져온다.
+3. 해당채널의 구독자 에게 보낼 이메일의 body를 데이터만 가지고 자동으로 구성하는 emailbuilder.js 구현.
+4. 만들어진 이메일은 모든 유저에게 보내고, 해당 이메일 내용은 fs를 통해 html 파일로 저장한다.
+
+db에 채널별로 저장된 내용으로 이메일 html을 만들어주는 코드.
+```
+        let emailhtml = ""
+        for(let i=0;i<article.length;i++)
+        {
+
+            emailhtml = emailbuilder.StartHtmlMiddleTitle(emailhtml,article[i].title);
+            let articledataQ = "SELECT * FROM ARTILCE_DATA WHERE article_id = '" + article[i].id + "'"
+            let articledata = (await conn.query(articledataQ))[0]
+
+            for(let a=0;a<articledata.length;a++)
+            {
+             emailhtml = emailbuilder.BuildHtmlMiddleContent(emailhtml,articledata[i].link,articledata[i].title)
+
+            }
+            emailhtml = emailbuilder.EndHtmlMiddleContent(emailhtml)
+
+        }
+
+        for(let s=0;s<subscribers.length;s++)
+        {
+            gmailSender.sendMailTo("Daily Issue : " + article[i].title , subscribers.email,emailhtml)
+        }
+
+        fs.writeFile(article[i].title + moment().toString() + '.html', emailhtml, 'utf-8', function(e){
+            if(e){
+                console.log(e);
+            }else{
+                console.log('01 WRITE DONE!');
+            }
+        });
+```
+
+채널별 모든 구독자를 가져오는 쿼리
+```
+ let subscribersQ = "SELECT * FROM USER user INNER JOIN (SELECT a.channel_id, a.user_id FROM SUBSCRIBE a INNER JOIN " +
+                            "(SELECT * FROM CHANNEL WHERE CHANNEL.channel_name = '" + obj + "') b"+
+                            " on a.channel_id = b.id ) innertable on user.id = innertable.user_id"
+```
 

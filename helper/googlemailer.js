@@ -9,13 +9,13 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-function sendMailTo(email)
+function sendMailTo(subject,email,body)
 {
     let mailOptions = {
         from: 'whghdud17@gmail.com',
         to: email,
-        subject: 'Daily Issue (By hoyoung)',
-        html:''
+        subject: subject,
+        html:body
     }
 
     transporter.sendMail(mailOptions, function (err, info) {
