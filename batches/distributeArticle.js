@@ -31,7 +31,7 @@ pool.getConnection().then(async (conn) => {
         //해당 채널의 article을 가져왔다. 여기서부터는 주제별로 묶어서 이메일 html을 빌드하는 부분
         //각 article마다 주제를 넣고, 그 밑에 그 주제에대한 데이터와, 링크를 채워넣는다.
         let emailhtml = ""
-        for(let i=0;i<article.length;i++)
+        for(let i=0;i<article.length;i++)åå
         {
 
             emailhtml = emailbuilder.StartHtmlMiddleTitle(emailhtml,article[i].title);
