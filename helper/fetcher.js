@@ -15,6 +15,16 @@ function NaverRightsideFetcher(){
             //let channelinfoQ = "SELECT * FROM CHANNEL WHERE url = 'https://news.naver.com/main/home.nhn'"
             //let channelinfo = (await conn.query(channelinfoQ))[0][0]
 
+
+            //해당 페이지에서 이전에 크롤링 했던 데이터 관련 튜플 삭제
+            await conn.query("UPDATE ARTICLE_DATA SET state = 'T'" +
+                " WHERE article_id in (SELECT id FROM ARTICE WHERE channel_id = (SELECT id FROM CHANNEL" +
+                "WHERE channel_name='naver_main')"
+
+            await conn.query("UPDATA ARTICLE SET state = 'T' WHERE channel_ id = (SELETCT id FROM channel WHERE " +
+                "channel_name = 'naver_main'");
+
+
             $("#container > div.main_aside > div.section.section_wide > div").each(async function(index, obj){
 
                 if(index>=2) {

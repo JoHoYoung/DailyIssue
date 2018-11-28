@@ -150,3 +150,15 @@ db에 채널별로 저장된 내용으로 이메일 html을 만들어주는 코�
                             " on a.channel_id = b.id ) innertable on user.id = innertable.user_id"
 ```
 
+
+#### 페이지를 크롤링 할때, 해당 페이지의 이전데이터 state = 'T'로 업데이트하여 예전 데이터로 처리.
+
+```
+     await conn.query("UPDATE ARTICLE_DATA SET state = 'T'" +
+                " WHERE article_id in (SELECT id FROM ARTICE WHERE channel_id = (SELECT id FROM CHANNEL" +
+                "WHERE channel_name='naver_main')"
+
+            await conn.query("UPDATA ARTICLE SET state = 'T' WHERE channel_ id = (SELETCT id FROM channel WHERE " +
+                "channel_name = 'naver_main'");
+
+```
