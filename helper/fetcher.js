@@ -12,17 +12,16 @@ function NaverRightsideFetcher(){
             let conn = await pool.getConnection()
             const $ = cheerio.load(body);
 
-            //let channelinfoQ = "SELECT * FROM CHANNEL WHERE url = 'https://news.naver.com/main/home.nhn'"
-            //let channelinfo = (await conn.query(channelinfoQ))[0][0]
+            let channelinfoQ = "SELECT * FROM CHANNEL WHERE channel_name = 'NAVER_News_Main'"
+            let channelinfo = (await conn.query(channelinfoQ))[0][0]
 
 
             //해당 페이지에서 이전에 크롤링 했던 데이터 관련 튜플 삭제
             await conn.query("UPDATE ARTICLE_DATA SET state = 'T'" +
-                " WHERE article_id in (SELECT id FROM ARTICE WHERE channel_id = (SELECT id FROM CHANNEL" +
-                "WHERE channel_name='naver_main')"
+                " WHERE article_id in (SELECT id FROM ARTICLE WHERE channel_id = (SELECT id FROM CHANNEL " +
+                "WHERE CHANNEL.id = '" + channelinfo.id + "'))")
 
-            await conn.query("UPDATA ARTICLE SET state = 'T' WHERE channel_ id = (SELETCT id FROM channel WHERE " +
-                "channel_name = 'naver_main'");
+            await conn.query("UPDATE ARTICLE SET state = 'T' WHERE channel_id = '" + channelinfo.id + "'")
 
 
             $("#container > div.main_aside > div.section.section_wide > div").each(async function(index, obj){
@@ -37,17 +36,18 @@ function NaverRightsideFetcher(){
                         let title = $(this).find("a").text();
                         let link = "https://news.naver.com" + $(this).find("a").attr("href")
                         num++
-                        let Article_dataQ = "INSERT INTO ARTICLE_DATA(id, title, link, type, article_id, state, created_date, updated_Date)" +
+                        let Article_dataQ = "INSERT INTO ARTICLE_DATA(id, title, link, article_id, state, created_date, updated_Date)" +
                             " VALUES(?, ?, ?, ?, 'C', now(), now())"
-                        //await conn.query(Article_dataQ, [uuid.v4(), title, link, channelinfo.id ,article_id]);
+                        await conn.query(Article_dataQ, [uuid.v4(), title, link, article_id]);
 
                     })
-                    let ArticleQ = "INSERT INTO ARTICLE(id, title, length, state, created_date, updated_date)" +
-                        " VALUES(?, ?, ?, 'C', now(), now())"
-                    //await conn.query(ArticleQ, [article_id, keyword, num])
+                    let ArticleQ = "INSERT INTO ARTICLE(id, title, length, channel_id, state, created_date, updated_date)" +
+                        " VALUES(?, ?, ?, ?,'C', now(), now())"
+                    await conn.query(ArticleQ, [article_id, keyword, num, channelinfo.id])
                 }
             })
 
+            console.log("성공")
             resolve("Success");
         });
     })

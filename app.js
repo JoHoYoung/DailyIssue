@@ -15,19 +15,12 @@ app.use(bodyParser.json());                                 // request의 body�
 
 app.use('/public', static(path.join(__dirname, 'public'))); // static 폴더 설정
 
+app.use("/", require("./routes/routes.js"))
+app.use("/api", require("./routes/api"))
+
 app.set('view engine', 'ejs');
 app.set('views', './views')                                         // view engine ejs로 설정
 
-
-app.get('/',helper.asyncWrapper(async(req,res) => {
-    let data = await helper.NaverRightsideFetcher();
-    console.log("끝")
-
-    let conn=await pool.getConnection();
-
-
-}))
-s
 
 http.createServer(app).listen(3001, function(){
     console.log("서버시작")
