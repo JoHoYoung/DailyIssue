@@ -116,25 +116,28 @@ db에 채널별로 저장된 내용으로 이메일 html을 만들어주는 코�
         for(let i=0;i<article.length;i++)
         {
 
+            console.log(article[i].title)
             emailhtml = emailbuilder.StartHtmlMiddleTitle(emailhtml,article[i].title);
-            let articledataQ = "SELECT * FROM ARTILCE_DATA WHERE article_id = '" + article[i].id + "'"
+            let articledataQ = "SELECT * FROM ARTICLE_DATA WHERE article_id = '" + article[i].id + "' AND state = 'C'"
             let articledata = (await conn.query(articledataQ))[0]
 
             for(let a=0;a<articledata.length;a++)
             {
-             emailhtml = emailbuilder.BuildHtmlMiddleContent(emailhtml,articledata[i].link,articledata[i].title)
+             emailhtml = emailbuilder.BuildHtmlMiddleContent(emailhtml,articledata[a].link,articledata[a].title)
+
             }
-
             emailhtml = emailbuilder.EndHtmlMiddleContent(emailhtml)
-
         }
+        emailhtml = emailbuilder.header + emailhtml + emailbuilder.footer
 
+        console.log(subscribers)
         for(let s=0;s<subscribers.length;s++)
         {
-            gmailSender.sendMailTo("Daily Issue : " + article[i].title , subscribers.email,emailhtml)
+            gmailSender.sendMailTo("Daily Issue : " + channel.channel_name , subscribers[s].email,emailhtml)
+            console.log("메일보냄")
         }
 
-        fs.writeFile(article[i].title + moment().toString() + '.html', emailhtml, 'utf-8', function(e){
+        fs.writeFile('../public/ArticleSent/' + channel.channel_name + moment().format(' YYYY. MM. DD').toString() + '.html', emailhtml, 'utf-8', function(e){
             if(e){
                 console.log(e);
             }else{
@@ -162,3 +165,17 @@ db에 채널별로 저장된 내용으로 이메일 html을 만들어주는 코�
                 "channel_name = 'naver_main'");
 
 ```
+
+### 테스트용 데이터 mysql 삽입 후 테스트
+
+#### 이메일 발송 여부 테스트
+<img width="1174" alt="2018-11-29 10 23 03" src="https://user-images.githubusercontent.com/37579650/49224779-aab8b880-f425-11e8-9383-d3487685bd28.png">
+내가 정한 임의의 제목으로 메일이 유저에게 정상 발송 되었다.
+
+#### 발송된 이메일의 형태
+<img width="1440" alt="2018-11-29 10 22 53" src="https://user-images.githubusercontent.com/37579650/49224783-ac827c00-f425-11e8-94cd-ce341f086a35.png">
+이메일의 형태또한 내가 의도한대로, 데이터의 내용에 따라 형식에 맞게 동적으로 생성 되었다.
+
+#### html 바디
+<img width="1440" alt="2018-11-29 10 22 53" src="https://user-images.githubusercontent.com/37579650/49224862-ec496380-f425-11e8-8a85-3d591a20cf3a.png">
+테스트 결과 데이터를 크롤링, 해당 내용을 토대로 동적인 html생성에 성공하였으며 해당내용이 정상적으로 유저 이메일로 발송되었다. 전송된 제목 text에 모두 해당 기사내용의 링크가 정상적으로 걸려있었다.
