@@ -9,7 +9,7 @@ const pool = db.pool
 function NaverRightsideFetcher(){
     return new Promise((resolve,reject) => {
         fetch.fetchUrl("https://news.naver.com/main/home.nhn", async function(error, meta, body){
-            let conn = await pool.getConnection()
+            //let conn = await pool.getConnection())
             const $ = cheerio.load(body);
 
             let channelinfoQ = "SELECT * FROM CHANNEL WHERE channel_name = 'NAVER_News_Main'"
