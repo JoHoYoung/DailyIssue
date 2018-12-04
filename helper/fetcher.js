@@ -53,4 +53,10 @@ function NaverRightsideFetcher(){
     })
 }
 
+function CauFetcher()
+{
+
+
+}
+
 module.exports.NaverRightsideFetcher = NaverRightsideFetcher
