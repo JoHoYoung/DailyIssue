@@ -55,8 +55,36 @@ function NaverRightsideFetcher(){
 
 function CauFetcher()
 {
+    return new Promise((resolve,reject) => {
+        fetch.fetchUrl("http://sw.cau.ac.kr/board_list.php?part=board01", async function(error, meta, body){
+            //let conn = await pool.getConnection())
+            const $ = cheerio.load(body);
+
+            //let channelinfoQ = "SELECT * FROM CHANNEL WHERE channel_name = 'NAVER_News_Main'"
+            //let channelinfo = (await conn.query(channelinfoQ))[0][0]
+
+
+            //해당 페이지에서 이전에 크롤링 했던 데이터 관련 튜플 삭제
+            //await conn.query("UPDATE ARTICLE_DATA SET state = 'T'" +
+             //   " WHERE article_id in (SELECT id FROM ARTICLE WHERE channel_id = (SELECT id FROM CHANNEL " +
+             //   "WHERE CHANNEL.id = '" + channelinfo.id + "'))")
+
+            //await conn.query("UPDATE ARTICLE SET state = 'T' WHERE channel_id = '" + channelinfo.id + "'")
+
+
+            let contents = $("#wrap > div.container > div > div.right_area > div.tbl_03 > table > tbody")
+
+                    $(contents).find("tbody > tr > td.left > a").each(async function (idx, obj) {
+                       console.log($(obj).text())
+
+                    })
+            console.log("성공")
+            resolve("Success");
+        });
+    })
 
 
 }
 
 module.exports.NaverRightsideFetcher = NaverRightsideFetcher
+module.exports.CauFetcher = CauFetcher
