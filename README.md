@@ -145,6 +145,9 @@ db에 채널별로 저장된 내용으로 이메일 html을 만들어주는 코�
             }
         });
 ```
+만들어진 html 파일.
+<img width="378" alt="2018-12-08 8 17 44" src="https://user-images.githubusercontent.com/37579650/49685415-5d73cf80-fb26-11e8-905a-256224d9db1f.png">
+
 
 채널별 모든 구독자를 가져오는 쿼리
 ```
