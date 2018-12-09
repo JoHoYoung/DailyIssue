@@ -11,7 +11,14 @@ const pool = db.pool
 
 router.get('/login',helper.asyncWrapper(async(req,res) => {
 
-    res.render('login',{err:0})
+    if(req.session.user)
+    {
+        res.render('main')
+        res.end()
+    }else {
+        res.render('login', {err: 0})
+        res.end()
+    }
 
 }))
 
@@ -23,7 +30,14 @@ router.get('/signup',helper.asyncWrapper(async(req,res) => {
 
 router.get('/',helper.asyncWrapper(async(req,res) => {
 
-    res.render('index')
+    if(req.session.user)
+    {
+        res.render('main')
+        res.end()
+    }else{
+        res.render('index')
+        res.end()
+    }
 
 }))
 

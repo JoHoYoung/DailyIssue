@@ -282,4 +282,15 @@ function checkEmail() {
         });
     }
 ```
-<img width="400" alt="2018-12-09 6 46 06" src="https://user-images.githubusercontent.com/37579650/49695730-d0428080-fbe2-11e8-9623-1855bcd4d2a1.png"><img width="400" alt="2018-12-09 6 45 39" src="https://user-images.githubusercontent.com/37579650/49695723-c15bce00-fbe2-11e8-8df6-22e80a4c2619.png">
+<img width="400" alt="2018-12-09 6 46 06" src="https://user-images.githubusercontent.com/37579650/49695730-d0428080-fbe2-11e8-9623-1855bcd4d2a1.png"> <img width="400" alt="2018-12-09 6 45 39" src="https://user-images.githubusercontent.com/37579650/49695723-c15bce00-fbe2-11e8-8df6-22e80a4c2619.png">
+
+#### FaceBook OAuth ( 미들웨어 순서문제 때문에 오류를 잡는데 오래걸렸다. 다음엔 이런실수를 하지 말자.)
+1. passport-facebook으로 유저 정보를 받아온다.
+2. 해당유저의 정보를 USER 테이블에 저장하고 PK인 id는 facebook에서 제공하는 id로 지정한다.
+3. 해당유저 id가 DB에 존재할 경우 로그인 시킨다.
+4. OAuth로 처음 접근하는 유저일 경우 다음을 따른다.
+5. 처음 접근시, 우리는 이메일로 서비스 하기 떄문에 이메일도 함께 받아온다.
+6. 만약 이메일이 없는 페이스북 유저일 경우는 이메일을 별도로 입력받도록 한다.
+7. 페이스북에서 제공하는 유저 이메일이 DB에 존재할 경우에도 이메일을 별도로 입력하도록 한다.
+8. 이메일 입력까지 마치면, DB에 저장하고 세션을 설정해 로그인을 유지한다.
+> 구현완료
