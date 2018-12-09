@@ -30,20 +30,27 @@
     font-family: YEONSUNG;
     src: url('../fonts/BMYEONSUNG_otf.otf') format('opentype')
 }
+html
+{
+    background-color: #ecefff;
+}
 
 body{
-    background-color: #fafafa;
+    background-color: #ecefff;
 }
 .mainbanner
 {
+    color:#4a4a4a;
     margin-left: 25vw;
     margin-top:10vw;
+    margin-bottom: 5vw;
     font-family : HANNAPro;
     font-size:10vw;
 }
 
 .subbanner{
 
+    color:#4a4a4a;
     font-family: HANNAair;
     font-size:3vw;
     margin-left:29vw;
@@ -71,7 +78,7 @@ body{
     margin-top:2.5vw;
     width: 22vw;
     height: 6vw;
-    background-color: #cfd7ff;
+    background-color: #fbffe5;
     cursor:pointer;
 
 }

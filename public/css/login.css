@@ -1,0 +1,114 @@
+@font-face {
+    font-family: DOHYEON;
+    src: url('../fonts/BMDOHYEON_otf.otf') format('opentype')
+}
+
+@font-face {
+    font-family: HANNA11;
+    src: url('../fonts/BMHANNA_11yrs_otf.otf') format('opentype')
+}
+
+
+@font-face {
+    font-family: HANNAair;
+    src: url('../fonts/BMHANNAAir_otf.otf') format('opentype')
+}
+@font-face {
+    font-family: HANNAPro;
+    src: url('../fonts/BMHANNAProOTF.otf') format('opentype')
+}
+@font-face {
+    font-family: JUA;
+    src: url('../fonts/BMJUA_otf.otf') format('opentype')
+}
+@font-face {
+    font-family: KIRAN;
+    src: url('../fonts/BMKIRANGHAERANG-OTF.otf') format('opentype')
+}
+
+@font-face {
+    font-family: YEONSUNG;
+    src: url('../fonts/BMYEONSUNG_otf.otf') format('opentype')
+}
+html{
+    background-color: #fafafa;
+}
+h1{
+    font-size: 3.5vw;
+    text-align: center;
+    font-family: HANNAair;
+    margin-bottom: 1vw;
+    color: gray;
+}
+a{
+    font-family: HANNAair;
+    text-decoration: none;
+    font-size: 1.5vw;
+    color: #8a8888;
+    margin-left: 4.5vw;
+    margin-top: 1vw;
+    display: inline-block;
+}
+.box{
+    display: inline-block;
+    width: 25vw;
+    height: 10vw;
+    margin-left: 35vw;
+    margin-top: 15vw;
+
+}
+
+.id {
+    font-family: HANNAair;
+    font-size: 1.5vw;
+    color: #585858;
+    border: 1px solid lightgray;
+    border-radius: 0.4vw;
+    height: 3vw;
+    display: block;
+    width: 100%;
+    padding-left: 1vw;
+}
+
+.pass{
+    margin-top: 0.1vw;
+    border: 1px solid lightgray;
+    border-radius: 0.4vw;
+    width: 100%;
+    display: block;
+    height: 3vw;
+    font-size: 1.5vw;
+    color: #585858;
+    padding-left: 1vw;
+}
+
+input[type="submit"]{
+    border:none;
+    margin-bottom:0.3vw;
+    border-radius:0.4vw;
+    -webkit-appearance: none;
+    font-family:HANNAair;
+    background-color: #cfd7ff;
+    margin-top:0.3vw;
+    font-size:1.3vw;
+    width: 100%;
+    line-height: 20px;
+    height: 3vw;
+    display: inline-block;
+}
+
+.facebook
+{
+    width: 25vw;
+    position: relative;
+    margin-top:1vw;
+    border-radius: 0.4vw;
+    height: 3vw;
+    vertical-align: middle;
+    font-family: HANNAair;
+    font-size:1.3vw;
+    color: white;
+    text-align: center;
+    background-color: #4267b2;
+    display:table-cell;
+}

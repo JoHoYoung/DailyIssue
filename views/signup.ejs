@@ -1,0 +1,96 @@
+<html>
+<head>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../public/css/signup.css">
+</head>
+
+<body>
+<h1>DAILY ISSUE</h1>
+<h2 class="sub">그날의 이슈를 메일로 받아보세요</h2>
+<div class="container">
+<form method="post" action = "/api/auth/signup">
+    <input type = "text" name="email" oninput="checkEmail()" id ="email" placeholder="EMAIL">
+    <input type = "password" name="password" placeholder="PASSWORD">
+    <input type = "text" name="name" placeholder="NAME">
+    <input type = "text" name="nickname" placeholder="NICKNAME" id="nickname" oninput = "checkNickname()">
+    <input type = "submit" class="signupbtn" value = "회원가입">
+</form>
+</div>
+</body>
+<script>
+    let emailCheck = 0
+    let nicknameCheck = 0
+    $(".signupbtn").prop("disabled", true);
+    $(".signupbtn").css("background-color", "#aaaaaa");
+
+    function checkEmail() {
+        var inputed = $('#email').val();
+        console.log(inputed);
+        $.ajax({
+            url : "/api/auth/dupemail",
+            method: "POST",
+            datatype: 'json',
+            data : {
+                email : inputed
+            },
+            success : function(data) {
+                console.log(data)
+                if(inputed=="") {
+                    $(".signupbtn").prop("disabled", true);
+                    $(".signupbtn").css("background-color", "#aaaaaa");
+                    $("#email").css("border-color", "#ff8282")
+                    emailCheck = 0;
+                } else if (data.statusCode==200) {
+                    $("#checkaa").css("background-color", "#B0F6AC");
+                    emailCheck = 1;
+                    $("#email").css("border-color", "#c9c9ff")
+                    if(emailCheck==1 && nicknameCheck == 1) {
+                        $(".signupbtn").prop("disabled", false);
+                        $(".signupbtn").css("background-color", "#9baaff");
+                    }
+                } else if (data.statusCode==700) {
+                    $(".signupbtn").prop("disabled", true);
+                    $(".signupbtn").css("background-color", "#aaaaaa");
+                    $("#email").css("border-color", "#ff8282")
+                    emailCheck = 0;
+                }
+            }
+        });
+    }
+
+    function checkNickname() {
+        var inputed = $('#nickname').val();
+        console.log(inputed);
+        $.ajax({
+            url : "/api/auth/dupnick",
+            method: "POST",
+            datatype: 'json',
+            data : {
+                nickname : inputed
+            },
+            success : function(data) {
+                console.log(data)
+                if(inputed=="") {
+                    $(".signupbtn").prop("disabled", true);
+                    $(".signupbtn").css("background-color", "#aaaaaa");
+                    $("#nickname").css("border-color", "#ff8282")
+                    nicknameCheck = 0;
+                } else if (data.statusCode==200) {
+                    $("#checkaa").css("background-color", "#B0F6AC");
+                    nicknameCheck = 1;
+                    $("#nickname").css("border-color", "#c9c9ff")
+                    if(emailCheck==1 && nicknameCheck == 1) {
+                        $(".signupbtn").prop("disabled", false);
+                        $(".signupbtn").css("background-color", "#9baaff");
+                    }
+                } else if (data.statusCode==700) {
+                    $(".signupbtn").prop("disabled", true);
+                    $(".signupbtn").css("background-color", "#aaaaaa");
+                    $("#nickname").css("border-color", "#ff8282")
+                    nicknameCheck = 0;
+                }
+            }
+        });
+    }
+</script>
+</html>

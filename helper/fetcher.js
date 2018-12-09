@@ -86,5 +86,7 @@ function CauFetcher()
 
 }
 
+function NaverEsports
+
 module.exports.NaverRightsideFetcher = NaverRightsideFetcher
 module.exports.CauFetcher = CauFetcher

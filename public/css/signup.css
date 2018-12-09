@@ -1,0 +1,108 @@
+@font-face {
+    font-family: DOHYEON;
+    src: url('../fonts/BMDOHYEON_otf.otf') format('opentype')
+}
+
+@font-face {
+    font-family: HANNA11;
+    src: url('../fonts/BMHANNA_11yrs_otf.otf') format('opentype')
+}
+
+
+@font-face {
+    font-family: HANNAair;
+    src: url('../fonts/BMHANNAAir_otf.otf') format('opentype')
+}
+@font-face {
+    font-family: HANNAPro;
+    src: url('../fonts/BMHANNAProOTF.otf') format('opentype')
+}
+@font-face {
+    font-family: JUA;
+    src: url('../fonts/BMJUA_otf.otf') format('opentype')
+}
+@font-face {
+    font-family: KIRAN;
+    src: url('../fonts/BMKIRANGHAERANG-OTF.otf') format('opentype')
+}
+
+@font-face {
+    font-family: YEONSUNG;
+    src: url('../fonts/BMYEONSUNG_otf.otf') format('opentype')
+}
+
+body{
+    -webkit-appearance: none;
+    background-color: #e0e4fb;
+    height: 60vw;
+
+
+}
+h1{
+    color:#4a4a4a;
+    margin-bottom:0;
+    text-align: center;
+    font-size: 8vw;
+    margin-top:4vw;
+}
+.container{
+    border-radius:0.9vw;
+    margin-left:24vw;
+    margin-top:3vw;
+    -webkit-appearance: none;
+    width: 50vw;
+    display: inline-block;
+    height: 35vw;
+    background-color: #f2f1ff;
+
+}
+input[type='text']{
+    padding-left:1vw;
+    border:0.2vw solid #c9c9ff;
+    border-radius:0.3vw;
+    font-size:1.4vw;
+    font-family:HANNAair;
+    width: 60%;
+    margin: 2vw;
+    margin-left:9vw;
+    display: block;
+    height: 3vw;
+}
+
+input[type='password']{
+    -webkit-appearance: none;
+    padding-left:1vw;
+    border:0.2vw solid #c9c9ff;
+    border-radius:0.3vw;
+    font-size:1.4vw;
+    width: 60%;
+    margin: 2vw;
+    margin-left:9vw;
+    color:black;
+    display: block;
+    height: 3vw;
+}
+
+.signupbtn{
+    -webkit-appearance: none;
+    width: 60%;
+    height: 4vw;
+    margin-left: 9vw;
+    margin-top: 2vw;
+    border: none;
+    background: lightblue;
+    border-radius: 0.7vw;
+    font-family: HANNAair;
+    font-size: 2vw;
+
+
+}
+.sub{
+    color: #4a4a4a;
+    font-family: HANNAair;
+    text-align: center;
+    margin-top: 0;
+}
+#email{
+    margin-top:5vw;
+}

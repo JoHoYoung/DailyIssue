@@ -9,8 +9,19 @@ const pool = db.pool
 
 
 
-router.get('/',helper.asyncWrapper(async(req,res) => {
+router.get('/login',helper.asyncWrapper(async(req,res) => {
 
+    res.render('login',{err:0})
+
+}))
+
+router.get('/signup',helper.asyncWrapper(async(req,res) => {
+
+    res.render('signup')
+
+}))
+
+router.get('/',helper.asyncWrapper(async(req,res) => {
 
     res.render('index')
 

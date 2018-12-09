@@ -1,0 +1,23 @@
+<html>
+<head>
+    <script>
+    <% if(err==1){%>
+        alert("아이디 비밀번호를 확인해 주세요")
+    <%}%>
+    </script>
+    <link rel="stylesheet" type="text/css" href="../public/css/login.css">
+</head>
+<body>
+<form method="post" action  ="/api/auth/signin">
+    <div class="box">
+        <h1>DAILY ISSUE</h1>
+    <input type = "text" class="id" placeholder="이메일">
+    <input type = "password" class = "pass" placeholder="비밀번호">
+        <input type = "submit" class="sbm" value="로그인">
+        <div class="facebook">페이스북 로그인</div>
+
+        <a href="/signup" class="signup">회원가입</a><a href="/signup" class="signup">비밀번호 찾기</a>
+    </div>
+</form>
+</body>
+</html>

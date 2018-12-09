@@ -1,11 +1,9 @@
 # Daily Issue
-#### Server : Nodejs(express)
-#### DB : redis, Mysql
+Server : Nodejs(express)
+DB : redis, Mysql
 
-#### Target : https://news.naver.com/main/home.nhn
-
-### Redis(latest) : Docker
-### Mysql(latest) : Aws Ec2 Unbuntu 사용
+Redis(latest) : Docker
+Mysql(latest) : Aws Ec2 Unbuntu
 
 ### Ec2 Ubuntu Mysql 설정
 > 동기화 Promise 처리를 위해 mysql2/promise 모듈 사용.
@@ -187,10 +185,101 @@ db에 채널별로 저장된 내용으로 이메일 html을 만들어주는 코�
 메인화면 디자인
 <img width="1440" alt="2018-11-30 12 31 35" src="https://user-images.githubusercontent.com/37579650/49232544-81a12380-f437-11e8-9b9a-fa0a37043dd5.png">
 
-#### 중앙대학교 SW교육원 공지사항 홈페이지 크롤링.
+#### 중앙대학교 SW교육원 공지사항 채널 추가..
 1. 중요한 정보가 올라오는 곳이지만 가끔씩 올라오는 바람에 자주 확인하지 않는다.
 2. 때문에 좋은 기회도 기간이 지나 놓친적이 많았다.
-3. 하루에 한번 크롤링하여 새로운 게시글이 올라올때 마다 내 메일로 보내고자 한다.
+3. 하루에 한번 크롤링하여 새로운 게시글이 올라올때 마다 메일로 서비스.
 
-크롤링 성공
+DATA
+<br>
 <img width="711" alt="2018-12-04 11 49 13" src="https://user-images.githubusercontent.com/37579650/49450299-1208ab00-f820-11e8-9848-76af1dc56059.png">
+
+#### 채널을 더 추가하기 전 UI 구축.
+1. 유저가 사용하기 위해선 UI가 필요하다.
+2. 회원가입, 로그인 시 ID는 이메일로 한다.
+3. 해당 이메일은 정보를 전송하는데 사용된다.
+4. 회원가입시 비밀번호는 mysql에 저장한다.
+5. 저장시 ctypto를 사용한다.
+6. 암호화 하는데 사용되는 salt는 최초 회원가입시 임의로 생성하여 USER record에 저장한다.
+7. 로그인시 해당유저의 salt로 입력받은 비밀번호를 암호화하여 DB의 저장된 비밀번호와 비교한다.
+8. 로그인, 회원가입 기능 구현을 위해 USER table 수정.
+9. OAUTH 유저를 구분하기 위해 provider_type column 추가
+10. 비밀번호 암호화 및 로그인을 위해 password, salt column 추가
+
+DB table 수정
+<img width="721" alt="2018-12-09 6 39 24" src="https://user-images.githubusercontent.com/37579650/49695679-fe739080-fbe1-11e8-8d83-526a8d6c2a93.png">
+
+#### 회원가입.
+1. 회원가입시 이메일, 닉네임의 중복은 허용하지 않는다.
+2. 중복여부를 체크하기 위해 API를 만들어 회원가입 클라이언트 단에서 ajax로 API를 호출하여 중복여부를 검사한다.
+```
+//MARK /api/auth/dupemail
+router.post('/dupemail',helper.asyncWrapper(async (req,res) => {
+
+    let conn = await pool.getConnection()
+    let email = req.body.email
+    let exist = (await conn.query("SELECT * FROM USER WHERE email = '" + email + "'"))[0][0]
+    let test = validator.validate(email)
+    if(exist != null || !test)
+    {
+        res.json({
+            statusCode: 700
+        })
+        conn.release
+        return
+    }
+    else
+    {
+        res.json({
+            statusCode: 200
+        })
+        conn.release
+        return
+    }
+}))
+```
+3. 중복인경우 700, 아닌경우 200을 리턴한다.
+4. 클라이언트 단에서는 해당 코드를 체크하여 유저에게 알려줄 수 있게한다.
+5. 중복여부에 따라 css input border 색 변경.
+6. 닉네임, 이메일이 중복될경우 회원가입 버튼 비활성화. 중복이 아닐경우 활성화.
+클라이언트 제어 코드
+```
+function checkEmail() {
+        var inputed = $('#email').val();
+        console.log(inputed);
+        $.ajax({
+            url : "/api/auth/dupemail",
+            method: "POST",
+            datatype: 'json',
+            data : {
+                email : inputed
+            },
+            success : function(data) {
+                console.log(data)
+                if(inputed=="") {
+                    $(".signupbtn").prop("disabled", true);
+                    $(".signupbtn").css("background-color", "#aaaaaa");
+                    $("#email").css("border-color", "#ff8282")
+                    emailCheck = 0;
+                } else if (data.statusCode==200) {
+                    $("#checkaa").css("background-color", "#B0F6AC");
+                    emailCheck = 1;
+                    $("#email").css("border-color", "#c9c9ff")
+                    if(emailCheck==1 && nicknameCheck == 1) {
+                        $(".signupbtn").prop("disabled", false);
+                        $(".signupbtn").css("background-color", "#9baaff");
+                    }
+                } else if (data.statusCode==700) {
+                    $(".signupbtn").prop("disabled", true);
+                    $(".signupbtn").css("background-color", "#aaaaaa");
+                    $("#email").css("border-color", "#ff8282")
+                    emailCheck = 0;
+                }
+            }
+        });
+    }
+```
+중복일 경우
+<img width="1429" alt="2018-12-09 6 45 39" src="https://user-images.githubusercontent.com/37579650/49695723-c15bce00-fbe2-11e8-8df6-22e80a4c2619.png">
+중복이 아닐경우
+<img width="1436" alt="2018-12-09 6 46 06" src="https://user-images.githubusercontent.com/37579650/49695730-d0428080-fbe2-11e8-9623-1855bcd4d2a1.png">
