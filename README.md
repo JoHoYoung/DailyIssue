@@ -63,7 +63,7 @@ function NaverRightsideFetcher(){
 <img width="421" alt="2018-11-24 5 05 15" src="https://user-images.githubusercontent.com/37579650/48977415-00ffc180-f0dd-11e8-9ad3-77e400b11fca.png">
 
 #### ARTICLE_DATA
-<img width="1440" alt="2018-11-24 5 05 07" src="https://user-images.githubusercontent.com/37579650/48977417-03621b80-f0dd-11e8-9f7a-ab9d49d4e421.png">
+<img width="400" alt="2018-11-24 5 05 07" src="https://user-images.githubusercontent.com/37579650/48977417-03621b80-f0dd-11e8-9f7a-ab9d49d4e421.png">
 
 ARTICLE_DATA의 article_id 속성은 ARTICLE의 id를 참조하는 외래키 이다. 이 관계로 데이터들을 날짜, 주제별로 구분하여 가져올 수 있다.
 
@@ -192,7 +192,7 @@ db에 채널별로 저장된 내용으로 이메일 html을 만들어주는 코�
 
 DATA
 <br>
-<img width="711" alt="2018-12-04 11 49 13" src="https://user-images.githubusercontent.com/37579650/49450299-1208ab00-f820-11e8-9848-76af1dc56059.png">
+<img width="300" alt="2018-12-04 11 49 13" src="https://user-images.githubusercontent.com/37579650/49450299-1208ab00-f820-11e8-9848-76af1dc56059.png">
 
 #### UI 구현
 <img width="400" alt="2018-12-09 6 50 32" src="https://user-images.githubusercontent.com/37579650/49695786-62e31f80-fbe3-11e8-8aca-18d9bcae2dca.png"><img width="400" alt="2018-12-09 6 50 36" src="https://user-images.githubusercontent.com/37579650/49695787-62e31f80-fbe3-11e8-84f8-a64e518816c9.png">
@@ -282,7 +282,5 @@ function checkEmail() {
         });
     }
 ```
-중복일 경우
-<img width="1429" alt="2018-12-09 6 45 39" src="https://user-images.githubusercontent.com/37579650/49695723-c15bce00-fbe2-11e8-8df6-22e80a4c2619.png">
-중복이 아닐경우
-<img width="1436" alt="2018-12-09 6 46 06" src="https://user-images.githubusercontent.com/37579650/49695730-d0428080-fbe2-11e8-9623-1855bcd4d2a1.png">
+<img width="400" alt="2018-12-09 6 46 06" src="https://user-images.githubusercontent.com/37579650/49695730-d0428080-fbe2-11e8-9623-1855bcd4d2a1.png">
+<img width="400" alt="2018-12-09 6 45 39" src="https://user-images.githubusercontent.com/37579650/49695723-c15bce00-fbe2-11e8-8df6-22e80a4c2619.png">
