@@ -195,8 +195,8 @@ DATA
 <img width="300" alt="2018-12-04 11 49 13" src="https://user-images.githubusercontent.com/37579650/49450299-1208ab00-f820-11e8-9848-76af1dc56059.png">
 
 #### UI 구현
-<img width="400" alt="2018-12-09 6 50 32" src="https://user-images.githubusercontent.com/37579650/49695786-62e31f80-fbe3-11e8-8aca-18d9bcae2dca.png"><img width="400" alt="2018-12-09 6 50 36" src="https://user-images.githubusercontent.com/37579650/49695787-62e31f80-fbe3-11e8-84f8-a64e518816c9.png">
-<img width="400" alt="2018-12-09 6 50 40" src="https://user-images.githubusercontent.com/37579650/49695788-637bb600-fbe3-11e8-9542-4c48ae3adb47.png">
+<img width="1440" alt="2018-12-09 6 57 51" src="https://user-images.githubusercontent.com/37579650/49695853-7347ca00-fbe4-11e8-8ee0-202c161fa53c.png"><img width="1440" alt="2018-12-09 6 57 54" src="https://user-images.githubusercontent.com/37579650/49695854-7347ca00-fbe4-11e8-9d8e-89390ec7adf1.png">
+<img width="1440" alt="2018-12-09 6 57 57" src="https://user-images.githubusercontent.com/37579650/49695855-7347ca00-fbe4-11e8-8e59-6d3a84b14386.png">
 #### 유저에게 서비스를 제공하기 위한 회원관리 설계
 1. 유저가 사용하기 위해선 UI가 필요하다.
 2. 회원가입, 로그인 시 ID는 이메일로 한다.
@@ -282,5 +282,4 @@ function checkEmail() {
         });
     }
 ```
-<img width="400" alt="2018-12-09 6 46 06" src="https://user-images.githubusercontent.com/37579650/49695730-d0428080-fbe2-11e8-9623-1855bcd4d2a1.png">
-<img width="400" alt="2018-12-09 6 45 39" src="https://user-images.githubusercontent.com/37579650/49695723-c15bce00-fbe2-11e8-8df6-22e80a4c2619.png">
+<img width="400" alt="2018-12-09 6 46 06" src="https://user-images.githubusercontent.com/37579650/49695730-d0428080-fbe2-11e8-9623-1855bcd4d2a1.png"><img width="400" alt="2018-12-09 6 45 39" src="https://user-images.githubusercontent.com/37579650/49695723-c15bce00-fbe2-11e8-8df6-22e80a4c2619.png">
