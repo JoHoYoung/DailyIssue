@@ -29,7 +29,7 @@ router.get('/signup',helper.asyncWrapper(async(req,res) => {
         res.render('main')
         res.end()
     }else {
-        res.render('signup', {err: 0})
+        res.render('setEmail', {err: 0})
         res.end()
     }
 

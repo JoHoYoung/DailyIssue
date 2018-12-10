@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer')
-const account = require('../config/account')
+const account = require('../config/gamilAccount')
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',

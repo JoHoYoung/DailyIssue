@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 const expressSession = require('express-session')
 const passport = require('passport')
 const FacebookStrategy = require('passport-facebook').Strategy;
-
+let FacebookAccount = require('./config/facebookAccount')
 
 const db=require('./helper/mysql')
 const helper = require('./helper/helper')
@@ -48,8 +48,8 @@ passport.deserializeUser(function (user, done) {
 
 
 passport.use(new FacebookStrategy({
-        clientID: '982849978562138',
-        clientSecret: '669c4090e46462b987db27c1153d81b8',
+        clientID: FacebookAccount.FACEBOOK_CLIENT_ID,
+        clientSecret: FacebookAccount.FACEBOOK_CLIENT_SECRET,
         callbackURL: "http://localhost:3001/api/auth/facebook/callback",
         passReqToCallback: false,
         profileFields: ['id', 'emails', 'name']

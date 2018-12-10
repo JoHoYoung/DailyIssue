@@ -15,3 +15,5 @@ router.get('/userinfo', helper.asyncWrapper(async (req,res) => {
 
 
 }))
+
+module.exports = router

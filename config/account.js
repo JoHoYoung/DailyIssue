@@ -13,5 +13,3 @@ account.REDIS_HOST = 'localhost'
 account.REDIS_PORT = 6379
 
 //Gmail
-account.GMAIL_HOST = 'whghdud17@gmail.com'
-account.GMAIL_PASSWORD = 'dkdeo6847!'

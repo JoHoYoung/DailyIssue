@@ -295,5 +295,32 @@ function checkEmail() {
 8. 이메일 입력까지 마치면, DB에 저장하고 세션을 설정해 로그인을 유지한다.
 > 구현완료
 
-#### 이메일 입력페이지 디자인, ajax구현. login.css 수정
+login.css 수정
+
 #### Jenkins 자동배포.
+
+#### 구독 로직 구현
+> 구독
+1. 사용자는 POST방식으로 해당 채널id와 함께 API 호출
+2. 클라이언트 단에서 막을 계획이지만 이미 구독한 채널일 경우 에러처리.
+
+> 구독 취소
+1. 사용자는 POST방식으로 해당 채널의id와 함께 API 호출
+2. 구독하지 않은 채널일 경우 에러처리
+
+#### 유저프로필, 프로필 사진을 관리하기위해 DB설계
+<img width="902" alt="2018-12-10 11 57 35" src="https://user-images.githubusercontent.com/37579650/49740678-1b8a8b00-fcd8-11e8-9312-a70f16eb9ab9.png">
+1. 기존 USER 테이블에 있던 user_name, phone 필드를 PROFILE 테이블로 분리
+2. 프로필 사진은 S3에 업로드 후, ATTACHMENT 테이블에서 관리한다. media_url 필드에 link를 저장한다.
+3. 나중에 서비스상으로 삭제된 파일을 S3에서 삭제할때 편리할것 같아서 설계 하였음.
+4. PROFILE 테이블의 attachment_id 속성은 ATTACHMENT 테이블의 id를 참조하는 외래키 이다.
+5. PROFILE 테이블의 user_id 속성은 USER 테이블의 id를 참조하는 외래키 이다.
+6. 프로필을 가져올때는 PROFILE 테이블과 ATTACHMENT 테이블을 attachment_id속성으로 INNER JOIN 하여 가져온다.
+7. USER 테이블의 경우 PK는 id로 지정되어있으나 의미상 id, nickname, user_email 모두 고유한 값이므로 사실상 PK가 3개인 것으로 볼 수 있다.
+8. PK가 여러개인 경우는 정규형을 만족하지 않을 가능성이 높다.
+9. 판단결과 USER 테이블의 모든 속성은 기본키(id, nickname, user_email)에 완전히 종속된다.
+10. 부분함수종속, 이행적 함수종속은 보이지 않는다.
+11. 지금까지 설계한 테이블들은 제3정규형 까지는 만족하고 있다.
+
+Email 입력화면 UI 디자인, ajax구현.
+<img width="1000" alt="2018-12-11 12 02 32" src="https://user-images.githubusercontent.com/37579650/49740681-1c232180-fcd8-11e8-8b2f-019ca5887824.png">
