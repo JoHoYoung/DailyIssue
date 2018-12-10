@@ -310,6 +310,7 @@ login.css 수정
 
 #### 유저프로필, 프로필 사진을 관리하기위해 DB설계
 <img width="902" alt="2018-12-10 11 57 35" src="https://user-images.githubusercontent.com/37579650/49740678-1b8a8b00-fcd8-11e8-9312-a70f16eb9ab9.png">
+
 1. 기존 USER 테이블에 있던 user_name, phone 필드를 PROFILE 테이블로 분리
 2. 프로필 사진은 S3에 업로드 후, ATTACHMENT 테이블에서 관리한다. media_url 필드에 link를 저장한다.
 3. 나중에 서비스상으로 삭제된 파일을 S3에서 삭제할때 편리할것 같아서 설계 하였음.
