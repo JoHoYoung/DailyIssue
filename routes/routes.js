@@ -24,7 +24,15 @@ router.get('/login',helper.asyncWrapper(async(req,res) => {
 
 router.get('/signup',helper.asyncWrapper(async(req,res) => {
 
-    res.render('signup')
+    if(req.session.user)
+    {
+        res.render('main')
+        res.end()
+    }else {
+        res.render('signup', {err: 0})
+        res.end()
+    }
+
 
 }))
 

@@ -60,25 +60,34 @@ passport.use(new FacebookStrategy({
     }
 ));
 // app.use(function(req, res, next) {
-//     if (req.method == "GET") {
+//    // if (req.method == "GET") {
 //         let path = req._parsedOriginalUrl.path
-//         if(path != '/' && path != '/signup' && path !='/login' && path != '/api/auth/facebook' && path != '/api/auth/facebook/callback' && path !='/api/auth/facebook/login_success') {
+//         if( path != '/' && path != '/signup' && path != '/login' && path != '/api/auth/facebook' && path != '/api/auth/facebook/callback' && path !='/api/auth/facebook/login_success' && path !='/api/auth/facebook') {
 //
 //             if (req.session.user == null) {
 //                 res.render('login', {err: 0})
 //                 res.end()
+//                 return
 //             }
+//             else{
+//                 res.render('main', {err: 0})
+//                 res.end()
+//                 return
+//             }
+//
 //         }else
 //         {
 //             if(req.session.user != null)
 //             {
 //                 res.render('main')
 //                 res.end()
+//                 return
 //             }
 //         }
-//     }
+//   //  }
 //     next();
-// });
+//     }
+// );
 
 app.use("/", require("./routes/routes.js"))
 app.use("/api", require("./routes/api"))

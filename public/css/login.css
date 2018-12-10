@@ -49,6 +49,11 @@ a{
     margin-top: 1vw;
     display: inline-block;
 }
+
+#facebookA{
+    margin:0 !important;
+
+}
 .box{
     display: inline-block;
     width: 25vw;

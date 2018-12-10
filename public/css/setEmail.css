@@ -30,19 +30,23 @@
     font-family: YEONSUNG;
     src: url('../fonts/BMYEONSUNG_otf.otf') format('opentype')
 }
-
+html{
+    background-color: #e0e4fb;
+}
+h1{
+    font-size: 3.5vw;
+    text-align: center;
+    font-family: HANNAair;
+    margin-bottom: 1vw;
+    color: gray;
+}
 body{
     -webkit-appearance: none;
     background-color: #e0e4fb;
-    height: 60vw;
+    height: 40vw;
 }
-
-h1{
-    color:#4a4a4a;
-    margin-bottom:0;
-    text-align: center;
-    font-size: 8vw;
-    margin-top:4vw;
+#email{
+    margin-top:5vw;
 }
 .container{
     border-radius:0.9vw;
@@ -51,35 +55,17 @@ h1{
     -webkit-appearance: none;
     width: 50vw;
     display: inline-block;
-    height: 35vw;
+    height: 25vw;
     background-color: #f2f1ff;
 
 }
-input[type='text']{
-    padding-left:1vw;
-    border:0.2vw solid #c9c9ff;
-    border-radius:0.3vw;
-    font-size:1.4vw;
-    font-family:HANNAair;
-    width: 60%;
-    margin: 2vw;
-    margin-left:9vw;
-    display: block;
-    height: 3vw;
-}
 
-input[type='password']{
-    -webkit-appearance: none;
-    padding-left:1vw;
-    border:0.2vw solid #c9c9ff;
-    border-radius:0.3vw;
-    font-size:1.4vw;
-    width: 60%;
-    margin: 2vw;
-    margin-left:9vw;
-    color:black;
-    display: block;
-    height: 3vw;
+.sub{
+    font-size:3vw;
+    margin-top:10vw;
+    color: #4a4a4a;
+    font-family: HANNAair;
+    text-align: center;
 }
 
 .signupbtn{
@@ -94,14 +80,17 @@ input[type='password']{
     font-family: HANNAair;
     font-size: 2vw;
 
+}
 
-}
-.sub{
-    color: #4a4a4a;
-    font-family: HANNAair;
-    text-align: center;
-    margin-top: 0;
-}
-#email{
-    margin-top:5vw;
+input[type='text']{
+    padding-left:1vw;
+    border:0.2vw solid #c9c9ff;
+    border-radius:0.3vw;
+    font-size:1.4vw;
+    font-family:HANNAair;
+    width: 60%;
+    margin: 2vw;
+    margin-left:9vw;
+    display: block;
+    height: 3vw;
 }

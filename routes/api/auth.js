@@ -157,9 +157,9 @@ router.get('/login_success',  ensureAuthenticated,helper.asyncWrapper(async (req
     if(user !=null)
     {
         req.session.user = {
-            id: userinfo.id,
-            email:userinfo.email,
-            nickname: userinfo.nickname,
+            id: userInfo.id,
+            email:userInfo.email,
+            nickname: userInfo.nickname,
             authorized: true
         };
         res.render('main')
