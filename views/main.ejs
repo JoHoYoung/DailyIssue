@@ -1,7 +1,79 @@
-<% include ./header%>
+
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/public/css/main.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
-메인
+<% include ./header%>
+<body>
+<html>
+<div class="headcoll">
+    <div class="headinner1" onmouseover ="subscribeCheck(event,'adsfasdf')" onmouseout = "init()"></div>
+    <div class="headinner1"></div>
+    <div class="headinner1"></div>
+
+</div>
+<div class="middlecoll">
+    <div class="headinner1"></div>
+    <div class="headinner1"></div>
+    <div class="headinner1"></div>
+
+</div>
+<div class="rearcoll">
+    <div class="headinner1"></div>
+    <div class="headinner1"></div>
+    <div class="headinner1"></div>
+</div>
+<input type = 'hidden' value="구독하기" id="subvalue">
+</html>
+<script type="text/javascript">
+
+        function subscribe(channel_id) {
+            var inputed = $('#email').val();
+            console.log(inputed);
+            $.ajax({
+                url : "/api/channel/subscribe",
+                method: "POST",
+                datatype: 'json',
+                data : {
+                    channel_id : channel_id
+                },
+                success : function(data) {
+
+                }
+            });
+        }
+
+        function subscribeCheck(target,channel_id){
+            $.ajax({
+                url : "/api/channel/subscribe/check",
+                method: "POST",
+                datatype: 'json',
+                data : {
+                    channel_id : channel_id
+                },
+                success : function(data) {
+                    console.log(data);
+                    console.log(this)
+                    if(data.statusCode == 200)
+                    {
+                        $('#subvalue').value = '구독하기'
+                        console.log('오')
+                    }else{
+                        $('#subvalue').value = '구독취소'
+                    }
+                }
+            });
+
+            event.target.innerHTML = $('#subvalue').val();
+        }
+
+        function init()
+        {
+            event.target.innerHTML = '하이'
+        }
+
+    console.log( "ready!" );
+</script>
+</body>
 </html>

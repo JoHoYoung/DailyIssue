@@ -325,3 +325,14 @@ login.css 수정
 
 Email 입력화면 UI 디자인, ajax구현.
 <img width="1000" alt="2018-12-11 12 02 32" src="https://user-images.githubusercontent.com/37579650/49740681-1c232180-fcd8-11e8-8b2f-019ca5887824.png">
+
+메인화면
+<img width="1000" alt="2018-12-16 9 26 12" src="https://user-images.githubusercontent.com/37579650/50053477-3b5afc80-0179-11e9-8942-f4e4698ea092.png">
+1. 사용자는 채널 박스에 마우스를 올려 클릭하면 구독, 또는 취소 할 수 있다.
+2. 클릭하려고 마우스를 올릴시 구독인지, 취소인지를 Ajax로 api를 호출하여 동적으로 보여준다.
+3. css hover 속성도 추가하여 사용자 편의성을 높인다.
+4. 사용자가 마우스를 올릴때마다 api를 호출하여 mysql에서 데이터를 가져오는 작업은 스트레스가 높으며 속도가 느리다.
+5. 사용자가 마우스를 올리는 이벤트후 api가 호출되면 해당 값을 redis에 저장하여 다음 접근시 mysql을 거치지 않도록 한다.
+6. 해당 redis key는 api:subscribe:check:user_id:channel:id로 지정한다.
+7. 해당 키의 expire 시간은 10분으로 지정한다.
+

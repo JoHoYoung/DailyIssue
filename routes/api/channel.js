@@ -54,4 +54,32 @@ router.post('/desubscribe', helper.asyncWrapper(async (req, res) => {
 
 }))
 
+// MARK: api/channel/subscribe/check
+router.post('/subscribe/check', helper.asyncWrapper(async (req, res) => {
+
+    console.log("체크")
+    let conn = await pool.getConnection()
+    let channel_id = req.body.channel_id
+
+    let existQ = "SELECT * FROM SUBSCRIBE WHERE user_id = ? AND channel_id = ? AND state = 'C'"
+    let exist = (await conn.query(existQ,[req.session.user.id, channel_id]))[0][0]
+
+    if(exist == null)  // 구독 정보가 없으면 200
+    {
+        res.json({
+            statusCode:200
+        })
+        conn.release()
+        return
+    }else           //있으면 600
+    {
+        res.json({
+            statusCode:600
+        })
+        conn.release()
+        return
+    }
+
+}))
+
 module.exports = router
