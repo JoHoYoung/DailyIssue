@@ -108,7 +108,7 @@ router.post('/signin',helper.asyncWrapper(async (req, res) => {
             authorized: true
         };
         conn.release();
-        res.render('main')
+        res.redirect('/main')
         res.end()
     }
     else
@@ -162,7 +162,7 @@ router.get('/login_success',  ensureAuthenticated,helper.asyncWrapper(async (req
             nickname: userInfo.nickname,
             authorized: true
         };
-        res.render('main')
+        res.redirect('/main')
         res.end()
         return
     }
@@ -200,7 +200,7 @@ router.get('/login_success',  ensureAuthenticated,helper.asyncWrapper(async (req
                 nickname: userInfo.nickname,
                 authorized: true
             };
-            res.render('main')
+            res.redirect('/main')
             res.end()
             return
         }
@@ -224,7 +224,7 @@ router.post('/setEmail', helper.asyncWrapper(async (req,res) =>{
         nickname: userInfo.nickname,
         authorized: true
     };
-    res.render('main')
+    res.redirect('/main')
     res.end()
     return
 

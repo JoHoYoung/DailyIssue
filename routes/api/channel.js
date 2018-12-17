@@ -20,16 +20,27 @@ router.post('/subscribe', helper.asyncWrapper(async (req, res) => {
     let channel_id = req.body.channel_id
 
     let existQ = "SELECT * FROM SUBSCRIBE WHERE user_id = ? AND channel_id = ? AND state ='C'"
-    let exist = (await conn.query(existQ,[req.session.user.id, channel_id]))
+    let exist = (await conn.query(existQ,[req.session.user.id, channel_id]))[0][0]
 
     if(exist != null) // 이미 구독 했으면 에러처리
     {
+        res.json({
+            statusCode:708,
+            statusMsg:"Already subscribe this channel"
+        })
         conn.release()
         return
     }
     let insertQ = "INSERT INTO SUBSCRIBE(id, user_id ,channel_id, state, created_date, updated_date) " +
-                    "VALUES(?, ?, ?, now(), now())"
+                    "VALUES(?, ?, ?, 'C',now(), now())"
     await conn.query(insertQ,[uuid.v4(), req.session.user.id, channel_id])
+
+    conn.release();
+    res.json({
+        statusCode:200,
+        statusMsg:'success'
+    })
+    res.end()
 
 }))
 

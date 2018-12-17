@@ -8,29 +8,26 @@
 <body>
 <html>
 <div class="headcoll">
-    <div class="headinner1" onmouseover ="subscribeCheck(event,'adsfasdf')" onmouseout = "init()"></div>
-    <div class="headinner1"></div>
-    <div class="headinner1"></div>
-
+    <% for(let i=0;i<channels.length;i+=3){%>
+    <div class="headinner1" onmouseover ="subscribeCheck(event,'<%=channels[i].id%>')" onmouseout = "init('<%= channels[i].channel_name%>')" onclick = "subscribe('<%=channels[i].id%>')"></div>
+    <%}%>
 </div>
 <div class="middlecoll">
-    <div class="headinner1"></div>
-    <div class="headinner1"></div>
-    <div class="headinner1"></div>
-
+    <% for(let i=1;i<channels.length;i+=3){%>
+        <div class="headinner1" onmouseover ="subscribeCheck(event,channels[i].id)" onmouseout = "init('<%= channels[i].id%>')"></div>
+    <%}%>
 </div>
 <div class="rearcoll">
-    <div class="headinner1"></div>
-    <div class="headinner1"></div>
-    <div class="headinner1"></div>
+    <% for(let i=2;i<channels.length;i+=3){%>
+        <div class="headinner1" onmouseover ="subscribeCheck(event,channels[i].id)" onmouseout = "init('<%= channels[i].id%>')"></div>
+    <%}%>
 </div>
 <input type = 'hidden' value="구독하기" id="subvalue">
 </html>
 <script type="text/javascript">
 
         function subscribe(channel_id) {
-            var inputed = $('#email').val();
-            console.log(inputed);
+
             $.ajax({
                 url : "/api/channel/subscribe",
                 method: "POST",
@@ -40,6 +37,7 @@
                 },
                 success : function(data) {
 
+                    console.log(data)
                 }
             });
         }
@@ -53,14 +51,13 @@
                     channel_id : channel_id
                 },
                 success : function(data) {
-                    console.log(data);
-                    console.log(this)
+                    console.log(data)
                     if(data.statusCode == 200)
                     {
-                        $('#subvalue').value = '구독하기'
+                        $('#subvalue').val('구독하기')
                         console.log('오')
                     }else{
-                        $('#subvalue').value = '구독취소'
+                        $('#subvalue').val('구독취소')
                     }
                 }
             });
@@ -68,9 +65,10 @@
             event.target.innerHTML = $('#subvalue').val();
         }
 
-        function init()
+        function init(str)
         {
-            event.target.innerHTML = '하이'
+            console.log(str);
+            event.target.innerHTML = str
         }
 
     console.log( "ready!" );
