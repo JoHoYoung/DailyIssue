@@ -336,3 +336,7 @@ Email 입력화면 UI 디자인, ajax구현.
 6. 해당 redis key는 api:subscribe:check:user_id:channel:id로 지정한다.
 7. 해당 키의 expire 시간은 10분으로 지정한다.
 
+API 변경
+1. 구독을 취소하는 desubscribe api 삭제
+2. subscribe api에서 이미 구독중이면, 구독을 취소하도록 처리한다.
+
