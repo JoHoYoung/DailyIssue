@@ -39,7 +39,6 @@ pool.getConnection().then(async (conn) => {
         let emailhtml = ""
         for(let i=0;i<article.length;i++)
         {
-
             console.log(article[i].title)
             emailhtml = emailbuilder.StartHtmlMiddleTitle(emailhtml,article[i].title);
             let articledataQ = "SELECT * FROM ARTICLE_DATA WHERE article_id = '" + article[i].id + "' AND state = 'C'"

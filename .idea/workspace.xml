@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19dece40-e1a8-418b-a4e0-05667f585417" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/channel.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/channel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batches/distributeArticle.js" beforeDir="false" afterPath="$PROJECT_DIR$/batches/distributeArticle.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -159,8 +158,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/batches/distributeArticle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="701">
-              <caret line="56" column="32" lean-forward="true" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
+            <state relative-caret-position="361">
+              <caret line="41" column="3" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -263,7 +262,6 @@
         <option value="$PROJECT_DIR$/helper/helper.js" />
         <option value="$PROJECT_DIR$/helper/helper.js" />
         <option value="$PROJECT_DIR$/helper/emailbuilder.js" />
-        <option value="$PROJECT_DIR$/batches/distributeArticle.js" />
         <option value="$PROJECT_DIR$/public/ArticleSent/NAVER_News_Main 2018. 11. 29.html" />
         <option value="$PROJECT_DIR$/batches/crawlingArticle.js" />
         <option value="$PROJECT_DIR$/helper/promiseHandler.js" />
@@ -292,6 +290,7 @@
         <option value="$PROJECT_DIR$/views/main.ejs" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/routes/api/channel.js" />
+        <option value="$PROJECT_DIR$/batches/distributeArticle.js" />
       </list>
     </option>
   </component>
@@ -446,12 +445,12 @@
       <workItem from="1544443369128" duration="6390000" />
       <workItem from="1544956717552" duration="5967000" />
       <workItem from="1545048992225" duration="3647000" />
-      <workItem from="1546259142532" duration="2395000" />
+      <workItem from="1546259142532" duration="2397000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108686000" />
+    <option name="totallyTimeSpent" value="108688000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -760,8 +759,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/batches/distributeArticle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="56" column="32" lean-forward="true" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
+        <state relative-caret-position="361">
+          <caret line="41" column="3" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="3" />
         </state>
       </provider>
     </entry>
