@@ -60,7 +60,6 @@ router.post('/subscribe', helper.asyncWrapper(async (req, res) => {
         })
         res.end()
     }
-
 }))
 
 //MARK api/channel/desubscribe      // 특정 채널의 구독을 취소합니다.
@@ -90,7 +89,6 @@ router.post('/subscribe/check', helper.asyncWrapper(async (req, res) => {
     console.log("체크")
     let conn = await pool.getConnection()
     let channel_id = req.body.channel_id
-
     let existQ = "SELECT * FROM SUBSCRIBE WHERE user_id = ? AND channel_id = ? AND state = 'C'"
     let exist = (await conn.query(existQ,[req.session.user.id, channel_id]))[0][0]
 
@@ -109,7 +107,6 @@ router.post('/subscribe/check', helper.asyncWrapper(async (req, res) => {
         conn.release()
         return
     }
-
 }))
 
 module.exports = router
