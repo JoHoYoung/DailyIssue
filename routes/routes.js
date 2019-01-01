@@ -4,7 +4,6 @@ const helper = require('../helper/helper')
 
 //db 설정
 const db = require('../helper/mysql')
-const pool = db.pool
 
 
 
@@ -51,7 +50,7 @@ router.get('/',helper.asyncWrapper(async(req,res) => {
 
 router.get('/main', helper.asyncWrapper(async(req,res) => {
 
-    let conn = await pool.getConnection();
+    let conn = await db.connection()
     let channels = (await conn.query("SELECT * FROM CHANNEL"))[0];
 
     if(req.session.user)

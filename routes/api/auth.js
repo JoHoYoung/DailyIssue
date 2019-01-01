@@ -2,14 +2,13 @@ const router = require('express').Router()
 const helper = require('../../helper/helper')
 const promiseHandler = require('../../helper/promiseHandler')
 const db = require('../../helper/mysql')
-const pool = db.pool
 const uuid = require('uuid')
 const validator = require("email-validator");
 const passport = require('passport')
 
 router.post('/dupemail',helper.asyncWrapper(async (req,res) => {
 
-    let conn = await pool.getConnection()
+    let conn = await db.connection()
     let email = req.body.email
     let exist = (await conn.query("SELECT * FROM USER WHERE email = '" + email + "'"))[0][0]
     let test = validator.validate(email)
@@ -33,7 +32,7 @@ router.post('/dupemail',helper.asyncWrapper(async (req,res) => {
 
 router.post('/dupnick',helper.asyncWrapper(async (req,res) => {
 
-    let conn = await pool.getConnection()
+    let conn = await db.connection()
     let nickname = req.body.nickname
     let exist = (await conn.query("SELECT * FROM USER WHERE  nickname = '" + nickname + "'"))[0][0]
 
@@ -57,7 +56,7 @@ router.post('/dupnick',helper.asyncWrapper(async (req,res) => {
 
 router.post('/signup',helper.asyncWrapper(async (req, res) => {
 
-    let conn = await pool.getConnection()
+    let conn = await db.connection()
 
     let email = req.body.email
     let password = req.body.password
@@ -77,7 +76,7 @@ router.post('/signup',helper.asyncWrapper(async (req, res) => {
 
 router.post('/signin',helper.asyncWrapper(async (req, res) => {
 
-    let conn = await pool.getConnection()
+    let conn = await db.connection()
 
     let useremail = req.body.email
     let password = req.body.password
@@ -146,8 +145,7 @@ router.get('/facebook/callback', passport.authenticate('facebook',{
 
 router.get('/login_success',  ensureAuthenticated,helper.asyncWrapper(async (req,res) =>{
 
-    let conn = await pool.getConnection()
-
+    let conn = await db.connection()
     let userInfo = req.user._json
     let email = userInfo.email
 
@@ -210,7 +208,7 @@ router.get('/login_success',  ensureAuthenticated,helper.asyncWrapper(async (req
 
 router.post('/setEmail', helper.asyncWrapper(async (req,res) =>{
 
-    let conn = await pool.getConnection()
+    let conn = await db.connection()
 
     let userInfo = req.user._json
     let email = req.body.email

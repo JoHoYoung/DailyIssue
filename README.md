@@ -340,3 +340,42 @@ API 변경
 1. 구독을 취소하는 desubscribe api 삭제
 2. subscribe api에서 이미 구독중이면, 구독을 취소하도록 처리한다.
 
+DB pool Connection 에러 수정
+1. 기존로직에서 간헐적으로 max pool connection 에러가 발생.
+2. 제한보다 pool을 많이 만들어서 발생하는 에러.
+3. 코드 점검결과 매번 db에 접속시 pool을 생성하기 때문임.
+4. DB에 접근시 pool을 생성하는 것이 아닌 connection만 가져와서 사용하도록 변경
+```
+const mysql2 = require("mysql2/promise")
+const account = require("../config/account")
+
+function createPool() {
+    try {
+        const mysql = require('mysql2');
+
+        // Initialize MySQL DB
+        const pool = mysql2.createPool({
+            host: account.MYSQL_HOST,
+            user: account.MYSQL_USERID,
+            password: account.MYSQL_PASSWORD,
+            database: account.MYSQL_DATABASE,
+            port: account.MYSQL_PORT,
+            connectionLimit: account.MYSQL_CONNECTION_LIMIT,
+            dateStrings: ['DATE', 'DATETIMES'],
+            waitForConnections: true,
+            queueLimit: 0
+        })
+
+        return pool;
+    } catch (error) {
+        return console.log(`Could not connect - ${error}`);
+    }
+}
+
+const pool = createPool()
+
+module.exports = {
+    connection: async() => pool.getConnection()
+}
+```
+

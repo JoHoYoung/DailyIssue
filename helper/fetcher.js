@@ -4,12 +4,11 @@ const moment = require('moment')
 const uuid = require('uuid')
 
 const db = require('./mysql')
-const pool = db.pool
 
 function NaverRightsideFetcher(){
     return new Promise((resolve,reject) => {
         fetch.fetchUrl("https://news.naver.com/main/home.nhn", async function(error, meta, body){
-            let conn = await pool.getConnection()
+            let conn = await db.connection()
             const $ = cheerio.load(body);
 
             let channelinfoQ = "SELECT * FROM CHANNEL WHERE channel_name = 'NAVER_News_Main'"
@@ -57,7 +56,7 @@ function CauFetcher()
 {
     return new Promise((resolve,reject) => {
         fetch.fetchUrl("http://sw.cau.ac.kr/board_list.php?part=board01", async function(error, meta, body){
-            let conn = await pool.getConnection()
+            let conn = await db.connection()
             const $ = cheerio.load(body);
 
             //let channelinfoQ = "SELECT * FROM CHANNEL WHERE channel_name = 'NAVER_News_Main'"
