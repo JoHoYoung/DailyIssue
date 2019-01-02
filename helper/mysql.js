@@ -3,8 +3,6 @@ const account = require("../config/account")
 
 function createPool() {
     try {
-        const mysql = require('mysql2');
-
         // Initialize MySQL DB
         const pool = mysql2.createPool({
             host: account.MYSQL_HOST,
