@@ -73,12 +73,40 @@ function CauFetcher()
 
             let contents = $("#wrap > div.container > div > div.right_area > div.tbl_03 > table > tbody")
 
-                    $(contents).find("tbody > tr > td.left > a").each(async function (idx, obj) {
-                       console.log($(obj).text())
+            $(contents).find("tbody > tr > td.left > a").each(async function (idx, obj) {
+                console.log($(obj).text())
 
-                    })
+            })
+
+            await conn.query("INSERT INTO ARTILCE")
             console.log("성공")
             resolve("Success");
+        });
+    })
+
+}
+
+function ThinkgoodFetcher()
+{
+    return new Promise((resolve,reject) => {
+        fetch.fetchUrl("https://www.thinkcontest.com/", async function(error, meta, body){
+            let conn = await db.connection()
+            const $ = cheerio.load(body);
+            let channel = await conn.query("SELECT * FROM CHANNEL WHERE channel_name = 'THINK_GOOD'")[0][0]
+
+            let links = []
+            $('#aside > div.cate-box > ul.cate-list.col-2.cate-list-1.on > li').each(async function(idx, obj) {
+                let link = 'https://www.thinkcontest.com/' + $(obj).find('a').attr('href')
+                let articleid = uuid.v4();
+                let insertQ = "INSERT INTO ARTICLE(id, title, channel_id, state, length, created_date, updated_date) " +
+                            "VALUES(?, ?, ?, 'C', ?, now(), now())"
+                links.push(link);
+                fetch.fetchUrl(link, async function(err,inmeta,inbody){
+
+
+                })
+
+            })
         });
     })
 
@@ -87,3 +115,4 @@ function CauFetcher()
 
 module.exports.NaverRightsideFetcher = NaverRightsideFetcher
 module.exports.CauFetcher = CauFetcher
+module.exports.ThinkgoodFetcher = ThinkgoodFetcher
