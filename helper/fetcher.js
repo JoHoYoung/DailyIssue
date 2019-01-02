@@ -91,22 +91,42 @@ function ThinkgoodFetcher()
     return new Promise((resolve,reject) => {
         fetch.fetchUrl("https://www.thinkcontest.com/", async function(error, meta, body){
             let conn = await db.connection()
-            const $ = cheerio.load(body);
-            let channel = await conn.query("SELECT * FROM CHANNEL WHERE channel_name = 'THINK_GOOD'")[0][0]
+            let $ = cheerio.load(body);
+            let channel = (await conn.query("SELECT * FROM CHANNEL WHERE channel_name = 'THINK_GOOD'"))[0][0]
 
             let links = []
+            let articleTitle = []
             $('#aside > div.cate-box > ul.cate-list.col-2.cate-list-1.on > li').each(async function(idx, obj) {
                 let link = 'https://www.thinkcontest.com/' + $(obj).find('a').attr('href')
-                let articleid = uuid.v4();
-                let insertQ = "INSERT INTO ARTICLE(id, title, channel_id, state, length, created_date, updated_date) " +
-                            "VALUES(?, ?, ?, 'C', ?, now(), now())"
-                links.push(link);
-                fetch.fetchUrl(link, async function(err,inmeta,inbody){
-
-
-                })
+                articleTitle.push($(obj).text());
+                links.push(link)
 
             })
+
+            for(let i = 0; i<links.length;i++)
+            {
+                let articleid = uuid.v4();
+                let length = 0;
+                 fetch.fetchUrl(links[i], async function(err, meta, body){
+                 $ = cheerio.load(body)
+
+                 $('#main > div > div.body.contest-cate > div > table > tbody > tr').each(async function(idx, obj){
+                     let link = 'https://www.thinkcontest.com$' + $(obj).find('a').attr('href')
+                     let title = $(obj).find('a').text();
+                     length++;
+
+                     let articleQ = "INSERT INTO ARTICLE_DATA(id, title, link, article_id, state, created_date, updated_date) "+
+                                    "VALUES(?, ?, ?, ?, ? ,now() ,now())"
+                     await conn.query(articleQ,[uuid.v4(), title, link, articleid, 'C'])
+
+                   })
+                 })
+
+                let insertQ = "INSERT INTO ARTICLE(id, title, channel_id, state, length, created_date, updated_date)"+
+                            "VALUES(?, ?, ?, ?, ?, now(), now())"
+                await conn.query(insertQ,[articleid,articleTitle[i],channel.id,'C',length])
+            }
+            conn.release()
         });
     })
 
