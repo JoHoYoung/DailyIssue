@@ -28,10 +28,7 @@ router.post('/subscribe', helper.asyncWrapper(async (req, res) => {
             console.log('구독')
             console.log(req.session.user.id)
             await conn.query("UPDATE SUBSCRIBE SET state = 'D' WHERE user_id = ? AND channel_id = ?", [req.session.user.id,channel_id]);
-            res.json({
-                statusCode: 200,
-                statusMsg: "success"
-            })
+            res.redirect('/main')
             conn.release()
             return
         }
@@ -39,10 +36,7 @@ router.post('/subscribe', helper.asyncWrapper(async (req, res) => {
         {
             console.log('취소')
             await conn.query("UPDATE SUBSCRIBE SET state = 'C' WHERE user_id = ? AND channel_id = ?", [req.session.user.id,channel_id]);
-            res.json({
-                statusCode: 200,
-                statusMsg: "success"
-            })
+            res.redirect('/main')
             conn.release()
             return
         }
@@ -53,11 +47,7 @@ router.post('/subscribe', helper.asyncWrapper(async (req, res) => {
             "VALUES(?, ?, ?, 'C',now(), now())"
         await conn.query(insertQ,[uuid.v4(), req.session.user.id, channel_id])
         conn.release();
-        res.json({
-            statusCode:200,
-            statusMsg:'success',
-            id:channel_id
-        })
+        res.redirect('/main')
         res.end()
     }
 }))

@@ -22,62 +22,56 @@
         <div class="headinner1" onmouseover ="subscribeCheck(event,'<%= channels[i].id %>','<%= channels[i].state%>')" onmouseout = "init('<%= channels[i].channel_name%>')" onclick = "subscribe('<%=channels[i].id%>')"><%= channels[i].channel_name%></div>
     <%}%>
 </div>
-
+<form method = 'post' action = '/api/channel/subscribe' id="subscribeform">
+    <input type = 'hidden' name="channel_id" id="channelId">
+</form>
 <input type = 'hidden' value="구독하기" id="subvalue0">
 <input type = 'hidden' value="구독취소" id="subvalue1">
 <input type = 'hidden' value="구독하기" id="subvalue">
 </html>
 <script type="text/javascript">
 
-        function subscribe(channel_id){
-            $.ajax({
-                url : "/api/channel/subscribe",
-                method: "POST",
-                datatype: 'json',
-                data : {
-                    channel_id : channel_id
-                },
-                success : function(data) {
-                    console.log(data)
-                }
-            });
-        }
+    function subscribe(channel_id){
 
-        function subscribeCheck(target,channel_id,state){
-            console.log(state)
-            $.ajax({
-                url : "/api/channel/subscribe/check",
-                method: "POST",
-                datatype: 'json',
-                data : {
-                    channel_id : channel_id
-                },
-                success : function(data) {
-                    console.log(data)
-                    if(data.statusCode == 200)
-                    {
-                        $('#subvalue').val('구독하기')
-                        console.log('오')
-                    }else{
-                        $('#subvalue').val('구독취소')
-                    }
-                }
-            });
+        document.getElementById('channelId').value = channel_id
+        document.getElementById('subscribeform').submit();
+    }
 
-            if(state == null || state == '') {
-                event.target.innerHTML = $('#subvalue0').val();
-            }else{
-                event.target.innerHTML = $('#subvalue1').val();
+    function subscribeCheck(target,channel_id,state){
+        console.log(state)
+        $.ajax({
+            url : "/api/channel/subscribe/check",
+            method: "POST",
+            datatype: 'json',
+            data : {
+                channel_id : channel_id
+            },
+            success : function(data) {
+                console.log(data)
+                if(data.statusCode == 200)
+                {
+                    $('#subvalue').val('구독하기')
+                    console.log('오')
+                }else{
+                    $('#subvalue').val('구독취소')
+                }
             }
+        });
 
+        if(state == 'D' || state == '') {
+            event.target.innerHTML = $('#subvalue0').val();
+        }else{
+            event.target.innerHTML = $('#subvalue1').val();
         }
 
-        function init(str)
-        {
-            console.log(str);
-            event.target.innerHTML = str
-        }
-        console.log( "ready!" );
+    }
+
+    function init(str)
+    {
+        console.log(str);
+        event.target.innerHTML = str
+    }
+    console.log( "ready!" );
 </script>
 </body>
 </html>
