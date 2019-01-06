@@ -384,3 +384,19 @@ module.exports = {
 ThinkGood channel 추가.
 공모전 분야 데이터를 가져올시 \t, \n이 많이 포함되어 있어, string.replace와 regexp를 이용하여 문자열 변환후 db에 추가.
 
+프로필 구현.
+1. 유저가 최초 가입시 이메일, 닉네임 정보로만 구성하여 PROFILE테이블에 삽입.
+2. endpoint : /api/profile/userinfo 를 통해 사용자는 개인의 프로필을 볼 수 있다.
+3. 프로필을 구성하는 각각 속성의 수정은 modal로 구현한다.
+4. 특정 속성에대한 수정 접근시 modal을 띄워주며 해당 modal에서 Ajax기능을 통해 프로필의 속성을 업데이트 한다.
+
+프로필 사진 업로드
+1. 업로드는 AWS S3서비스를 사용한다.
+2. AWS S3와 multer 모듈을 사용하여 업로드한다.
+3. 사용자가 프로필 사진을 업로드시 파일 location을 받아와 ATTACHMENT 테이블에 INSERT 한다.
+4. 사용자가 프로필 사진을 업로드하면 PROFILE 테이블의 attachment_id 속성으로 ATTACHMENT 테이블을 참조하여 특정사용자의 프로필 사진을 불러올 수 있다.
+5. 프로필 사진업로드시 버켓에 저장되는 파일의 이름은 다음과 같이 설정한다.
+```
+filename = "user-profile-" + req.session.user.id + '-' + Date.now();
+```
+

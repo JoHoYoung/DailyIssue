@@ -15,10 +15,10 @@ const s3 = new aws.S3();
 
 const storageS3 = multerS3({
     s3: s3,
-    bucket: 'depromeet-salad',
+    bucket: 'dailyissue',
     acl: 'public-read',
     key: function (req, file, callback) {
-        const filename = "salad" + '-' + Date.now();
+        const filename = "user-profile-" + req.session.user.id + '-' + Date.now();
         callback(null, filename);
     }
 });
