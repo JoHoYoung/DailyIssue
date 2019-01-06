@@ -381,3 +381,6 @@ module.exports = {
 1. ajax로 db변경시, mouseover시 구독하기, 구독취소 중 어떤것을 띄울지 처리하기가 까다로웠다.
 2. redirect 처리로 변경하여 해당채널의 대한 상태값을 다시 받아오는 것으로 변경
 
+ThinkGood channel 추가.
+공모전 분야 데이터를 가져올시 \t, \n이 많이 포함되어 있어, string.replace와 regexp를 이용하여 문자열 변환후 db에 추가.
+

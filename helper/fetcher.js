@@ -98,7 +98,8 @@ function ThinkgoodFetcher()
             let articleTitle = []
             $('#aside > div.cate-box > ul.cate-list.col-2.cate-list-1.on > li').each(async function(idx, obj) {
                 let link = 'https://www.thinkcontest.com/' + $(obj).find('a').attr('href')
-                articleTitle.push($(obj).text());
+                let text = $(obj).text().replace(/\t/g,'').replace(/\n/g,'')
+                articleTitle.push(text);
                 links.push(link)
 
             })
@@ -111,7 +112,7 @@ function ThinkgoodFetcher()
                  $ = cheerio.load(body)
 
                  $('#main > div > div.body.contest-cate > div > table > tbody > tr').each(async function(idx, obj){
-                     let link = 'https://www.thinkcontest.com$' + $(obj).find('a').attr('href')
+                     let link = 'https://www.thinkcontest.com' + $(obj).find('a').attr('href')
                      let title = $(obj).find('a').text();
                      length++;
 
@@ -129,7 +130,6 @@ function ThinkgoodFetcher()
             conn.release()
         });
     })
-
 
 }
 
