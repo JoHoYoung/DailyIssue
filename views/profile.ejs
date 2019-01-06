@@ -1,0 +1,16 @@
+<html>
+<head>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/profile.css">
+</head>
+<% include ./header%>
+<body>
+<h1>DAILY ISSUE</h1>
+<h2 class="sub">나의 정보</h2>
+<div class="container">
+      <div class='box3' >이메일 | <%= profile.email%></div>
+      <div class="box3" >닉네임 | <%= profile.user_name%></div>
+      <div class="box3" >Phone | <%= profile.phone%></div>
+</div>
+</body>
+</html>

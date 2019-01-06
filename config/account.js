@@ -13,3 +13,6 @@ account.REDIS_HOST = 'localhost'
 account.REDIS_PORT = 6379
 
 //Gmail
+account.AWS_S3_ACCESS_KEY = 'AKIAIZI4KHUKQ4RQH7NA'
+account.AWS_S3_SECRET_KEY = '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'
+account.AWS_SE_REGION = 'ap-northeast-2'

@@ -1,3 +1,5 @@
 # Dependency directories
 node_modules/
 config/facebookAccount.js
+config/account.js
+config/gmailAccount.js

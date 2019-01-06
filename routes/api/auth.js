@@ -69,7 +69,10 @@ router.post('/signup',helper.asyncWrapper(async (req, res) => {
 
     let insertQ = "INSERT INTO USER(id, nickname, user_name, email, state, salt, password ,created_date, updated_date) " +
                     "VALUES(?, ?, ?, ?, 'C', ?, ?, now(), now())"
+    let profileQ = "INSERT INTO PROFILE(id, email, user_name, state, created_date, updated_date) " +
+                    "VALUES(?, ?, ?, ?, now(), now())"
     await conn.query(insertQ,[uuid.v4(), nickname, name, email, salt, hashed_password])
+    await conn.query(profileQ,[uuid.v4(), email, nickname, 'C'])
     res.redirect('/login')
 
 }))
@@ -148,7 +151,6 @@ router.get('/login_success',  ensureAuthenticated,helper.asyncWrapper(async (req
     let conn = await db.connection()
     let userInfo = req.user._json
     let email = userInfo.email
-
     // OAuth로 기존에 접근했던 유저일 경우 바로 로그인 시킴
     let user = (await conn.query("SELECT * FROM USER WHERE id = ?",[userInfo.id]))[0][0]
 
@@ -167,7 +169,7 @@ router.get('/login_success',  ensureAuthenticated,helper.asyncWrapper(async (req
 
     // OAuth로 처음 접근하는 유저일 경우
 
-    if(email != null)// 유저 페이스북 정보에 이메일이 없을경우
+    if(email == null)// 유저 페이스북 정보에 이메일이 없을경우
     {
         res.render('setEmail')
         res.end()
@@ -176,8 +178,8 @@ router.get('/login_success',  ensureAuthenticated,helper.asyncWrapper(async (req
 
     }else//유저 페이스북 정보에 이메일이 있을경우
     {
-        let exist = (await conn.query("SELECT * FROM USER WHERE email = ?"),[email])
-
+        let exist = (await conn.query("SELECT * FROM USER WHERE email = ?",[email]))[0][0]
+        console.log(exist)
         if(exist != null) //중복이메일일 경우
         {// 이메일 입력 페이지로 이동
 
@@ -188,10 +190,13 @@ router.get('/login_success',  ensureAuthenticated,helper.asyncWrapper(async (req
         else //처음 접근하고 중복이메일이 아닐경우
         {
             // 레코드를 추가하고 로그인 시킴(세션을 유지함)
+            console.log("여기")
             let insertQ = "INSERT INTO USER(id, nickname, email, state, provider_type, created_date, updated_date) " +
                         "VALUES(?, ?, ?, 'C', 1, now(), now())"
+            let profileQ = "INSERT INTO PROFILE(id, email, state, created_date, updated_date) " +
+                            "VALUES(?, ?, ?, now(),now())"
             await conn.query(insertQ,[userInfo.id, userInfo.id, userInfo.email])
-
+            await conn.query(profileQ,[uuid.v4(), userInfo.email, 'C'])
             req.session.user = {
                 id: userInfo.id,
                 email:userInfo.email,
@@ -214,7 +219,11 @@ router.post('/setEmail', helper.asyncWrapper(async (req,res) =>{
     let email = req.body.email
     let insertQ = "INSERT INTO USER(id, nickname, email, state, provider_type, created_date, updated_date) " +
         "VALUES(?, ?, ?, 'C', 1, now(), now())"
+    let profileQ = "INSERT INTO PROFILE(id, email, state, created_date, updated_date) " +
+        "VALUES(?, ?, ?, now(),now())"
+
     await conn.query(insertQ,[userInfo.id, userInfo.id, email])
+    await conn.query(profileQ,[uuid.v4(), userinfo.email, 'C'])
 
     req.session.user = {
         id: userInfo.id,
