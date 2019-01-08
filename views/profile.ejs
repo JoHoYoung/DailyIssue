@@ -3,14 +3,126 @@
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/public/css/profile.css">
 </head>
+<script>
+
+    function modal_close() {
+        let mm = document.getElementsByClassName('modal');
+        i = mm.length;
+        while (i--) {
+            mm[i].style.display = "none";
+        }
+    }
+    function imgmodalOn()
+    {
+        let mm = document.getElementById('imgmodal')
+        mm.style.display = 'block'
+
+    }
+
+    function nickmodalOn()
+    {
+        let mm = document.getElementById('nickmodal')
+        mm.style.display = 'block'
+    }
+
+    function phonemodalOn()
+    {
+        let mm = document.getElementById('phonemodal')
+        mm.style.display = 'block'
+    }
+</script>
 <% include ./header%>
 <body>
 <h1>DAILY ISSUE</h1>
 <h2 class="sub">나의 정보</h2>
 <div class="container">
+    <div class = 'img' onclick = 'imgmodalOn()'>프로필 사진</div>
       <div class='box3' >이메일 | <%= profile.email%></div>
-      <div class="box3" >닉네임 | <%= profile.user_name%></div>
-      <div class="box3" >Phone | <%= profile.phone%></div>
+      <div class="box3" onclick = 'nickmodalOn()' >닉네임 | <%= profile.user_name%></div>
+      <div class="box3" onclick = 'phonemodalOn()' >Phone | <%= profile.phone%></div>
 </div>
+
+<div class="modal" id="imgmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">프로필 사진을 선택해주세요</h5>
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="/api/profile/upload">
+                    <input type="file" id = 'file' name="userimage">
+                    <input type="submit" value="설정" id="imgsubmit">
+                </form>
+                <button type="button"onclick="modal_close()" class="closebtn" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="nickmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">변경할 닉네임을 입력해주세요</h5>
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="/api/profile/update" class="formcss">
+                    <input type="text" id ='nick' name="val" oninput = 'checkNickname()'>
+                    <input type="hidden" name="col" value = "nickname">
+                    <input type="submit" value="설정" id="imgsubmit" class="sbmbtn">
+                </form>
+                <button type="button"onclick="modal_close()" class="closebtn" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="phonemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">변경할 번호를 입력해주세요</h5>
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="/api/profile/update">
+                    <input type="text" id = 'file' name="val">
+                    <input type="hidden" name="col" value = "phone">
+                    <input type="submit" value="설정" id="imgsubmit">
+                </form>
+                <button type="button"onclick="modal_close()" class="closebtn" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
+<script>
+    modal_close()
+    function checkNickname() {
+        var inputed = $('#nick').val();
+        console.log(inputed);
+        $.ajax({
+            url : "/api/auth/dupnick",
+            method: "POST",
+            datatype: 'json',
+            data : {
+                nickname : inputed
+            },
+            success : function(data) {
+                console.log(data)
+                if(inputed=="") {
+                    $(".sbmbtn").prop("disabled", true);
+                    $(".formcss").css("background-color", "#F56E6F");
+                    nicknameCheck = 0;
+                } else if (data.statusCode==200) {
+                    $(".sbmbtn").prop("disabled", false);
+                    $(".formcss").css("background-color", "#e0e4ff");
+                } else if (data.statusCode==700) {
+                    $(".signupbtn").prop("disabled", true);
+                    $(".formcss").css("background-color", "#f56e6f");
+                }
+            }
+        });
+    }
+</script>
 </html>

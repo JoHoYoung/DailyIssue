@@ -400,3 +400,7 @@ ThinkGood channel 추가.
 filename = "user-profile-" + req.session.user.id + '-' + Date.now();
 ```
 
+업로드, 닉네임, phone 수정 modal 구현
+1. 닉네임, 휴대폰, 프로필사진 클릭시 변경을 위한 modal 구현
+2. 모달에 원하는 값입력 또는 파일 업로드 후 제출시 수정.
+<img width="500" alt="2019-01-08 11 09 44" src="https://user-images.githubusercontent.com/37579650/50836032-901a1d80-139b-11e9-89be-6496e2a72b80.png">
