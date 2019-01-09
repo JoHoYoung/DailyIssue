@@ -56,7 +56,6 @@ router.get('/main', helper.asyncWrapper(async(req,res) => {
     if(req.session.user)
     {
         let channels = (await conn.query("SELECT a.id, a.channel_name, b.state FROM (SELECT * FROM CHANNEL WHERE state='C') a LEFT OUTER JOIN(SELECT * FROM SUBSCRIBE WHERE user_id = '" + req.session.user.id + "') b on a.id = b.channel_id"))[0];
-        console.log(channels)
         res.render('main',{channels: channels})
         res.end()
     }else{

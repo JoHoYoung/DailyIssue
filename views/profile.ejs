@@ -36,7 +36,7 @@
 <h1>DAILY ISSUE</h1>
 <h2 class="sub">나의 정보</h2>
 <div class="container">
-    <div class = 'img' onclick = 'imgmodalOn()'>프로필 사진</div>
+    <div class = 'img' onclick = 'imgmodalOn()' ><img src='<%= profile.url%>'></div>
       <div class='box3' >이메일 | <%= profile.email%></div>
       <div class="box3" onclick = 'nickmodalOn()' >닉네임 | <%= profile.user_name%></div>
       <div class="box3" onclick = 'phonemodalOn()' >Phone | <%= profile.phone%></div>
@@ -49,8 +49,8 @@
                 <h5 class="modal-title" id="exampleModalLabel">프로필 사진을 선택해주세요</h5>
             </div>
             <div class="modal-footer">
-                <form method="post" action="/api/profile/upload">
-                    <input type="file" id = 'file' name="userimage">
+                <form method="post" action="/api/profile/upload" enctype="multipart/form-data">
+                    <input type="file" id = 'file' name="image">
                     <input type="submit" value="설정" id="imgsubmit">
                 </form>
                 <button type="button"onclick="modal_close()" class="closebtn" data-dismiss="modal">Close</button>

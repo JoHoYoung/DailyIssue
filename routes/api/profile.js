@@ -9,11 +9,11 @@ router.get('/userinfo', helper.asyncWrapper(async (req,res) => {
     let conn = await db.connection()
 
     // 프로필 정보
-    let profileQ = "SELECT pf.id, pf.email, pf.user_name, pf.phone, pf.state, pf.attachment_id, pf.created_date, pf.updated_date FROM (SELECT * FROM PROFILE WHERE email = ?) pf LEFT OUTER JOIN ATTACHMENT at on pf.attachment_id = at.id"
+    let profileQ ="SELECT a.id, us.email, a.nickname, a.phone, a.state a.media_url as url FROM USER us INNER JOIN (SELECT pf.id, pf.nickname, pf.phone, pf.state, pf.attachment_id, pf.created_date, pf.updated_date, at.media_url as url FROM" +
+                " PROFILE pf LEFT OUTER JOIN ATTACHMENT at on pf.attachment_id = at.id) a on a.id = us.profile_id AND u.email = ?"
     let profile = (await conn.query(profileQ,[req.session.user.email]))[0][0]
     let mychannelQ = "SELECT * FROM (SELECT * FROM SUBSCRIBE WHERE user_id = ? AND state = 'C') a INNER JOIN CHANNEL b on a.channel_id = b.id"
     let mychannel = (await conn.query(mychannelQ,[req.session.user.id]))
-    console.log(profile)
     conn.release()
     res.render('profile',{profile:profile, mychannel : mychannel})
     res.end()
@@ -22,12 +22,12 @@ router.get('/userinfo', helper.asyncWrapper(async (req,res) => {
 
 router.post('/upload', multersingle, helper.asyncWrapper(async (req,res)=>{
 
-    let conn = db.connection()
+    let conn = await db.connection()
     let attid = uuid.v4()
-    let insetQ = "INSERT INTO ATTACHMENT(id, usage, media_url, state, created_date, updated_date)" +
-                " VALUES(?, ?, ?, ?, now(), now())"
-    await conn.query(insetQ,[attid, 'profile', req.file.location, 'C'])
-    await conn.query("UPDATE PROFILE SET attachment_id = ? WHERE email = ?",[req.file.location, req.session.email])
+    let insertQ = "INSERT INTO ATTACHMENT(id, inuse, media_url, state, created_date, updated_date)" +
+                  " VALUES(?, ?, ?, ?, now(), now())"
+    await conn.query(insertQ,[attid,'profile',req.file.location,'C'])
+    await conn.query("UPDATE PROFILE SET attachment_id = ? WHERE email = ?",[attid, req.session.user.email])
 
     conn.release()
     res.redirect('/api/profile/userinfo')
@@ -36,7 +36,7 @@ router.post('/upload', multersingle, helper.asyncWrapper(async (req,res)=>{
 
 router.post('/update',helper.asyncWrapper(async (req,res) => {
 
-    let conn = db.connection()
+    let conn = await db.connection()
     let column = req.body.col
     let val = req.body.val
 

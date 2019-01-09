@@ -403,3 +403,10 @@ filename = "user-profile-" + req.session.user.id + '-' + Date.now();
 1. 닉네임, 휴대폰, 프로필사진 클릭시 변경을 위한 modal 구현
 2. 모달에 원하는 값입력 또는 파일 업로드 후 제출시 수정.
 <img width="500" alt="2019-01-08 11 09 44" src="https://user-images.githubusercontent.com/37579650/50836032-901a1d80-139b-11e9-89be-6496e2a72b80.png">
+
+DB설계 수정
+1. USER table에는 profile_id 라는 외래키가 있어 PROFILE TABLE의 id를 참조한다.
+2. PROFILE TABLE 의 attachment_id 속성은 ATTACHMENT TALBE의 id를 참조하는 외래키 이다.
+3. 프로필을 가져올때 USER 테이블의 profile_id속성을 통해 가져온다.
+4. 프로필 사진을 가져올때 PROFILE 테이블의 attachment_id 속성을 통해 가져온다.
+<img width="800" alt="2019-01-09 9 26 12" src="https://user-images.githubusercontent.com/37579650/50899379-44c44580-1455-11e9-891d-54fb54a481bb.png">

@@ -34,7 +34,7 @@ router.post('/dupnick',helper.asyncWrapper(async (req,res) => {
 
     let conn = await db.connection()
     let nickname = req.body.nickname
-    let exist = (await conn.query("SELECT * FROM USER WHERE  nickname = '" + nickname + "'"))[0][0]
+    let exist = (await conn.query("SELECT * FROM PROFILE WHERE nickname = '" + nickname + "'"))[0][0]
 
     if(exist != null)
     {
@@ -66,13 +66,13 @@ router.post('/signup',helper.asyncWrapper(async (req, res) => {
     let obj = await promiseHandler.cryptoPassword(password)
     let salt = obj[0]
     let hashed_password = obj[1]
-
-    let insertQ = "INSERT INTO USER(id, nickname, user_name, email, state, salt, password ,created_date, updated_date) " +
-                    "VALUES(?, ?, ?, ?, 'C', ?, ?, now(), now())"
-    let profileQ = "INSERT INTO PROFILE(id, email, user_name, state, created_date, updated_date) " +
+    let profile_id = uuid.v4()
+    let insertQ = "INSERT INTO USER(id, email, state, profile_id, salt, password ,created_date, updated_date) " +
+                    "VALUES(?, ?, 'C', ?, ?, ?, now(), now())"
+    let profileQ = "INSERT INTO PROFILE(id, user_name, nickname, state, created_date, updated_date) " +
                     "VALUES(?, ?, ?, ?, now(), now())"
-    await conn.query(insertQ,[uuid.v4(), nickname, name, email, salt, hashed_password])
-    await conn.query(profileQ,[uuid.v4(), email, nickname, 'C'])
+    await conn.query(insertQ,[uuid.v4(), email, profile_id, salt, hashed_password])
+    await conn.query(profileQ,[profile_id, name, nickname, 'C'])
     res.redirect('/login')
 
 }))
@@ -191,18 +191,20 @@ router.get('/login_success',  ensureAuthenticated,helper.asyncWrapper(async (req
         {
             // 레코드를 추가하고 로그인 시킴(세션을 유지함)
             console.log("여기")
-            let insertQ = "INSERT INTO USER(id, nickname, email, state, provider_type, created_date, updated_date) " +
-                        "VALUES(?, ?, ?, 'C', 1, now(), now())"
-            let profileQ = "INSERT INTO PROFILE(id, email, state, created_date, updated_date) " +
+            let profile_id = uuid.v4()
+            let insertQ = "INSERT INTO USER(id, email, state, profile_id, provider_type, created_date, updated_date) " +
+                        "VALUES(?, ?, 'C', 1, ?,now(), now())"
+            let profileQ = "INSERT INTO PROFILE(id, nickname, state, created_date, updated_date) " +
                             "VALUES(?, ?, ?, now(),now())"
-            await conn.query(insertQ,[userInfo.id, userInfo.id, userInfo.email])
-            await conn.query(profileQ,[uuid.v4(), userInfo.email, 'C'])
+            await conn.query(insertQ,[userInfo.id, userInfo.email,profile_id])
+            await conn.query(profileQ,[profile_id, userInfo.email,'C'])
             req.session.user = {
                 id: userInfo.id,
                 email:userInfo.email,
                 nickname: userInfo.nickname,
                 authorized: true
             };
+            console.og
             res.redirect('/main')
             res.end()
             return
@@ -217,13 +219,14 @@ router.post('/setEmail', helper.asyncWrapper(async (req,res) =>{
 
     let userInfo = req.user._json
     let email = req.body.email
-    let insertQ = "INSERT INTO USER(id, nickname, email, state, provider_type, created_date, updated_date) " +
+    let profile_id = uuid.v4()
+    let insertQ = "INSERT INTO USER(id, email, profile_id,state, provider_type, created_date, updated_date) " +
         "VALUES(?, ?, ?, 'C', 1, now(), now())"
-    let profileQ = "INSERT INTO PROFILE(id, email, state, created_date, updated_date) " +
+    let profileQ = "INSERT INTO PROFILE(id, nickname, state, created_date, updated_date) " +
         "VALUES(?, ?, ?, now(),now())"
 
-    await conn.query(insertQ,[userInfo.id, userInfo.id, email])
-    await conn.query(profileQ,[uuid.v4(), userinfo.email, 'C'])
+    await conn.query(insertQ,[userInfo.id, email,profile_id])
+    await conn.query(profileQ,[profile_id, userInfo.id,'C'])
 
     req.session.user = {
         id: userInfo.id,
