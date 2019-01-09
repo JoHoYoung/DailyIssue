@@ -9,9 +9,11 @@ router.get('/userinfo', helper.asyncWrapper(async (req,res) => {
     let conn = await db.connection()
 
     // 프로필 정보
-    let profileQ ="SELECT a.id, us.email, a.nickname, a.phone, a.state a.media_url as url FROM USER us INNER JOIN (SELECT pf.id, pf.nickname, pf.phone, pf.state, pf.attachment_id, pf.created_date, pf.updated_date, at.media_url as url FROM" +
-                " PROFILE pf LEFT OUTER JOIN ATTACHMENT at on pf.attachment_id = at.id) a on a.id = us.profile_id AND u.email = ?"
+    let profileQ ="SELECT a.id, us.email, a.nickname, a.phone, a.state, a.url FROM USER us INNER JOIN " +
+                "(SELECT pf.id, pf.nickname, pf.phone, pf.state, pf.attachment_id, pf.created_date, pf.updated_date, at.media_url as url FROM" +
+                " (SELECT * FROM PROFILE) pf LEFT OUTER JOIN ATTACHMENT at on pf.attachment_id = at.id) a on a.id = us.profile_id AND us.email = ?"
     let profile = (await conn.query(profileQ,[req.session.user.email]))[0][0]
+    console.log(profile)
     let mychannelQ = "SELECT * FROM (SELECT * FROM SUBSCRIBE WHERE user_id = ? AND state = 'C') a INNER JOIN CHANNEL b on a.channel_id = b.id"
     let mychannel = (await conn.query(mychannelQ,[req.session.user.id]))
     conn.release()
@@ -27,7 +29,8 @@ router.post('/upload', multersingle, helper.asyncWrapper(async (req,res)=>{
     let insertQ = "INSERT INTO ATTACHMENT(id, inuse, media_url, state, created_date, updated_date)" +
                   " VALUES(?, ?, ?, ?, now(), now())"
     await conn.query(insertQ,[attid,'profile',req.file.location,'C'])
-    await conn.query("UPDATE PROFILE SET attachment_id = ? WHERE email = ?",[attid, req.session.user.email])
+    let profile_id = (await conn.query("SELECT * FROM USER WHERE email =?",[req.session.user.email]))[0][0].profile_id
+    await conn.query("UPDATE PROFILE SET attachment_id = ? WHERE id = ?",[attid, profile_id])
 
     conn.release()
     res.redirect('/api/profile/userinfo')

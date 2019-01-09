@@ -36,9 +36,10 @@
 <h1>DAILY ISSUE</h1>
 <h2 class="sub">나의 정보</h2>
 <div class="container">
-    <div class = 'img' onclick = 'imgmodalOn()' ><img src='<%= profile.url%>'></div>
+    <div class = 'img' onclick = 'imgmodalOn()' ><% if(profile.url != null){%>
+            <img src='<%= profile.url%>'><%}%></div>
       <div class='box3' >이메일 | <%= profile.email%></div>
-      <div class="box3" onclick = 'nickmodalOn()' >닉네임 | <%= profile.user_name%></div>
+      <div class="box3" onclick = 'nickmodalOn()' >닉네임 | <%= profile.nickname%></div>
       <div class="box3" onclick = 'phonemodalOn()' >Phone | <%= profile.phone%></div>
 </div>
 

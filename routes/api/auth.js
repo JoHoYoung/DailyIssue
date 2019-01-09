@@ -193,7 +193,7 @@ router.get('/login_success',  ensureAuthenticated,helper.asyncWrapper(async (req
             console.log("여기")
             let profile_id = uuid.v4()
             let insertQ = "INSERT INTO USER(id, email, state, profile_id, provider_type, created_date, updated_date) " +
-                        "VALUES(?, ?, 'C', 1, ?,now(), now())"
+                        "VALUES(?, ?, 'C', ?, 1, now(), now())"
             let profileQ = "INSERT INTO PROFILE(id, nickname, state, created_date, updated_date) " +
                             "VALUES(?, ?, ?, now(),now())"
             await conn.query(insertQ,[userInfo.id, userInfo.email,profile_id])
