@@ -43,8 +43,9 @@ router.post('/update',helper.asyncWrapper(async (req,res) => {
     let column = req.body.col
     let val = req.body.val
 
-    let query = "UPDATE PROFILE SET " + column + " = ? WHERE email = ?"
-    await conn.query(query,[val, req.session.user.email])
+    let profileId = (await conn.query('SELECT * FROM USER WHERE email = ?',[req.session.user.email]))[0][0].profile_id
+    let query = "UPDATE PROFILE SET " + column + " = ? WHERE id = ?"
+    await conn.query(query,[val, profileId])
     conn.release()
     res.redirect('/api/profile/userinfo')
     res.end()
